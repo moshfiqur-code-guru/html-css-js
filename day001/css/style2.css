@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #666;
+}
+
+#main {
+    width: 90%;
+    margin:auto;
+}
+#header {
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#header div {
+    height: 100%;
+    background: #fff;
+    /* float: left; */
+}
+
+#logo {
+    width: 20%;
+}
+#space {
+    width: calc(30% - 4px);
+    /* margin: 0px 10px 0px  10px; */
+    margin: 0 2px;
+}
+#menu {
+    width: 50%;
+}
+
+#main-content{
+    height: 920px;
+    margin-top: 2px;
+    display: flex;
+    flex-wrap: wrap;
+}
+#main-content div{
+    background-color: #fff;
+}
+
+#sidebar {
+    width: calc(30% - 2px);
+    margin-right: 2px;
+}
+#content {
+    width: 70%;
+}
