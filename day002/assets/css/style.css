@@ -1,0 +1,114 @@
+/* 
+ =================== NORMALIZE ================================
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+a {
+    text-decoration:  none;
+}
+
+/*
+    ================= COMMON STYLE=================
+*/
+.section {
+    padding: 140px 0;
+}
+.container {
+    width: 80%;
+    margin: auto;
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.between {
+    justify-content: space-between;
+}
+.center {
+    justify-content: center;
+}
+.align-center{
+    align-items: center;
+}
+.column {
+    flex-direction: column;
+}
+/* 
+=============================== HEADER SECTION =====================
+*/
+#header-section {
+    background: url("../img/header-bg.jpg") center center / cover;
+    height: 100vh;
+    position: relative;
+    z-index: 1
+}
+.container.header-container{
+    width: 90%;
+}
+.left-black-bar {
+    background-color: #0a0c00;
+    height: 100%;
+    width: 40%;
+    position: absolute;
+    z-index: -1
+}
+nav {
+    color: #fff;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+.logo {
+    color: #fff;
+    font-family: "Raleway", sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+}
+.menu {
+    font-family: "Raleway", sans-serif;
+}
+
+.menu li a {
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 20px;
+    display: block;
+}
+.search {
+    margin-left: 100px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.intro {
+    color: #fff;
+     font-family: "Raleway", sans-serif;
+     padding-top: 100px;
+}
+.who-we-are {
+   
+    font-size: 120px;
+    font-weight: 900;
+}
+.everyday{
+    text-indent: 200px;
+}
+.what-we-do {
+    margin-top: 30px;
+}
+.what-we-do p {
+    font-size: 20px;
+    font-weight: 500;
+}
+.what-we-do button {
+    background-color: #e3ff04;
+    border: none;
+    padding: 18px 25px;
+    margin-top: 30px;
+    font-weight: 600;
+}
