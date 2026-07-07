@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awesome showcase || Codertema IT</title>
+    <script src="https://unpkg.com/feather-icons"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
@@ -15,8 +16,9 @@
 <body>
     <section id="header-section">
         <div class="left-black-bar"></div>
-        <div class="container header-container">
-            <nav class="flex align-center">
+
+        <nav class="">
+            <div class="container header-container flex align-center between">
                 <div class="logo">
                     <span>Frisk</span>
                 </div>
@@ -35,7 +37,11 @@
                         🔍 <span>search</span>
                     </div>
                 </div>
-            </nav>
+            </div>
+        </nav>
+
+        <div class="container header-container">
+
 
             <div class="intro">
                 <div class="who-we-are flex column">
@@ -43,13 +49,121 @@
                     <span> Creative Things</span><span class="everyday">Everyday</span>
                 </div>
                 <div class="what-we-do">
-                    <p>We are digital agency that helps immersive <br/> and engaging user experiences that</p>
+                    <p>We are digital agency that helps immersive <br /> and engaging user experiences that</p>
                     <button>VIEW OUR WORKS</button>
                 </div>
             </div>
 
         </div>
     </section>
+
+    <section id="marquee-section">
+        <marquee dir="ltr">
+            <span>We Give Unparalleled Flexibility</span>
+        </marquee>
+    </section>
+
+    <section id="our-offer" class="section">
+        <div class="container">
+            <div class="section-title text-center">
+                <span>What We Can Do for <br />Our Clients</span>
+            </div>
+
+            <div class="offer-list flex space-between">
+                <div class="single-offer">
+                    <div>
+                        <i data-feather="layout"></i>
+                        <h3>Web Design</h3>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+
+                <div class="single-offer">
+                    <div>
+                        <i data-feather="layout"></i>
+                        <h3>Web Design</h3>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+
+                <div class="single-offer">
+                    <div>
+                        <i data-feather="layout"></i>
+                        <h3>Web Design</h3>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+                <div class="single-offer">
+                    <div>
+                        <i data-feather="layout"></i>
+                        <h3>Web Design</h3>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="range-of-service" class="section">
+        <div class="range-thumb">
+            <img src="assets/img/range.jpg" />
+        </div>
+        <div class="container flex justify-end">
+            <div class="range-content">
+
+                <span class="range-content-title">We Offer a Wide <br />Range of Brand <br /> Services</span>
+                <p>We are a creative agency working with brands building insightful strategy, creating unique designs
+                    and crafting value</p>
+
+                <div class="range-progress-list">
+                    <ul>
+                        <li>
+                            <div class="flex between">
+                                <span>DESING</span>
+                                <span>86%</span>
+                            </div>
+                            <div class="bar"></div>
+                        </li>
+
+                        <li>
+                            <div class="flex between">
+                                <span>DESING</span>
+                                <span>86%</span>
+                            </div>
+                            <div class="bar"></div>
+                        </li>
+
+                        <li>
+                            <div class="flex between">
+                                <span>DESING</span>
+                                <span>86%</span>
+                            </div>
+                            <div class="bar"></div>
+                        </li>
+
+                        <li>
+                            <div class="flex between">
+                                <span>DESING</span>
+                                <span>86%</span>
+                            </div>
+                            <div class="bar"></div>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        feather.replace();
+    </script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

@@ -13,6 +13,10 @@ a {
     text-decoration:  none;
 }
 
+body{
+    font-family: "Raleway", sans-serif;
+}
+
 /*
     ================= COMMON STYLE=================
 */
@@ -30,6 +34,9 @@ a {
 .between {
     justify-content: space-between;
 }
+.justify-end {
+    justify-content: end;
+}
 .center {
     justify-content: center;
 }
@@ -39,6 +46,14 @@ a {
 .column {
     flex-direction: column;
 }
+.text-center {
+    text-align: center;
+}
+.section-title {
+    font-size: 50px;
+    font-weight: 900;
+    padding-bottom: 40px;
+}
 /* 
 =============================== HEADER SECTION =====================
 */
@@ -47,6 +62,13 @@ a {
     height: 100vh;
     position: relative;
     z-index: 1
+}
+#header-section.scrollable nav {
+    position: fixed;
+    left: 0; top: 0; right: 0;
+    z-index: 1;
+    background: blue;
+    padding: 0 5%;
 }
 .container.header-container{
     width: 90%;
@@ -61,7 +83,8 @@ a {
 nav {
     color: #fff;
     justify-content: space-between;
-    padding: 30px 0;
+    transition: 500ms;
+
 }
 .logo {
     color: #fff;
@@ -111,4 +134,89 @@ nav {
     padding: 18px 25px;
     margin-top: 30px;
     font-weight: 600;
+}
+
+/* 
+ ----------- marquee section-----------
+*/
+
+#marquee-section {
+    background: #1601ac;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 600;
+    padding: 30px 10px;
+}
+
+/*  ------------- OFFER SECTION ---- */
+#offer-section {}
+.offer-list {}
+.single-offer {
+    padding: 10px;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.single-offer div {
+    background: #ddd;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.single-offer svg {
+    width: 60px;
+    height: 60px;
+
+}
+.single-offer h3 {
+    font-size: 30px;
+    font-weight: 900;
+    padding: 50px 0;
+}
+.single-offer a {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#range-of-service {
+    background: #e3ff04;
+    position: relative;
+}
+.range-content {
+    width: 50%;
+
+}
+.range-content-title{
+    font-size: 50px;
+    font-weight: 800;
+    display: block;
+    padding-bottom: 30px;
+}
+.range-content p {
+    font-size: 20px;
+}
+
+.range-thumb {
+    width: 40%;
+    position: absolute;
+    top: -100px;
+    height: 97%;
+}
+.range-thumb img {
+    width: 100%;
+    height: 100%;
+}
+
+.range-content ul li span {
+    font-size: 20px;
+    font-weight: 500;
+    display: block;
+    padding: 10px 0;
+}
+.range-content .bar{
+    width: 100%;
+   border-top: 4px solid #000;
+}
+.range-progress-list {
+    padding-top: 40px;
 }
