@@ -9,12 +9,14 @@
 ul {
     list-style: none;
 }
+
 a {
-    text-decoration:  none;
+    text-decoration: none;
 }
 
-body{
+body {
     font-family: "Raleway", sans-serif;
+    
 }
 
 /*
@@ -23,37 +25,47 @@ body{
 .section {
     padding: 140px 0;
 }
+
 .container {
     width: 80%;
     margin: auto;
 }
+
 .flex {
     display: flex;
     flex-wrap: wrap;
 }
+
 .between {
     justify-content: space-between;
 }
+
 .justify-end {
     justify-content: end;
 }
+
 .center {
     justify-content: center;
 }
-.align-center{
+
+.align-center {
     align-items: center;
 }
+
 .column {
     flex-direction: column;
 }
+
 .text-center {
     text-align: center;
 }
+
 .section-title {
     font-size: 50px;
     font-weight: 900;
     padding-bottom: 40px;
 }
+
 /* 
 =============================== HEADER SECTION =====================
 */
@@ -62,36 +74,52 @@ body{
     height: 100vh;
     position: relative;
     z-index: 1
+    
 }
+
 #header-section.scrollable nav {
     position: fixed;
-    left: 0; top: 0; right: 0;
+    left: 0;
+    top: 0;
+    right: 0;
     z-index: 1;
     background: blue;
-    padding: 0 5%;
+    padding: 0;
 }
-.container.header-container{
+
+.container.header-container {
     width: 90%;
 }
+
 .left-black-bar {
     background-color: #0a0c00;
     height: 100%;
-    width: 40%;
+    width: 100%;
     position: absolute;
-    z-index: -1
+    z-index: -1;
+    transition: 700ms linear;
+    opacity: 0;
 }
+
+.animation-start .left-black-bar {
+    width: 40%;
+    opacity: 1;
+}
+
 nav {
     color: #fff;
     justify-content: space-between;
     transition: 500ms;
 
 }
+
 .logo {
     color: #fff;
     font-family: "Raleway", sans-serif;
     font-weight: 900;
     font-size: 30px;
 }
+
 .menu {
     font-family: "Raleway", sans-serif;
 }
@@ -102,32 +130,43 @@ nav {
     text-transform: uppercase;
     padding: 20px;
     display: block;
+    transition: 300ms;
 }
+.menu li a:hover {
+    color: #999
+}
+
 .search {
     margin-left: 100px;
     text-transform: uppercase;
     font-weight: 600;
 }
+
 .intro {
     color: #fff;
-     font-family: "Raleway", sans-serif;
-     padding-top: 100px;
+    font-family: "Raleway", sans-serif;
+    padding-top: 100px;
 }
+
 .who-we-are {
-   
+
     font-size: 120px;
     font-weight: 900;
 }
-.everyday{
+
+.everyday {
     text-indent: 200px;
 }
+
 .what-we-do {
     margin-top: 30px;
 }
+
 .what-we-do p {
     font-size: 20px;
     font-weight: 500;
 }
+
 .what-we-do button {
     background-color: #e3ff04;
     border: none;
@@ -150,48 +189,71 @@ nav {
 
 /*  ------------- OFFER SECTION ---- */
 #offer-section {}
+
 .offer-list {}
+
 .single-offer {
     padding: 10px;
     width: 50%;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .single-offer div {
     background: #ddd;
     padding: 20px;
     box-sizing: border-box;
+    transition: 500ms cubic-bezier(0,-0.64, 0.51, 1.66)
 }
+
 .single-offer svg {
     width: 60px;
     height: 60px;
 
 }
+
 .single-offer h3 {
     font-size: 30px;
     font-weight: 900;
     padding: 50px 0;
 }
+
 .single-offer a {
     text-transform: uppercase;
     font-size: 16px;
     font-weight: 500;
-}
+    background: rgb(70, 70, 219);
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px 0;
+    transition: 400ms cubic-bezier(0,-0.64, 0.51, 1.66);
 
+}
+.single-offer a:hover {
+    background: blue;
+    border-radius: 0px 10px;
+    
+}
+.single-offer div:hover {
+    scale: 1.1;
+}
 #range-of-service {
     background: #e3ff04;
     position: relative;
 }
+
 .range-content {
     width: 50%;
 
 }
-.range-content-title{
+
+.range-content-title {
     font-size: 50px;
     font-weight: 800;
     display: block;
     padding-bottom: 30px;
 }
+
 .range-content p {
     font-size: 20px;
 }
@@ -202,6 +264,7 @@ nav {
     top: -100px;
     height: 97%;
 }
+
 .range-thumb img {
     width: 100%;
     height: 100%;
@@ -213,10 +276,44 @@ nav {
     display: block;
     padding: 10px 0;
 }
-.range-content .bar{
+
+.range-content .bar {
     width: 100%;
-   border-top: 4px solid #000;
+    border-top: 4px solid #000;
 }
+
 .range-progress-list {
     padding-top: 40px;
+}
+
+
+
+.animate__animated.animate__bounce {
+  --animate-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+
+
+
+/**/
+#our-projects {
+    overflow: hidden;
+}
+.projects {
+}
+.slick-list {
+    overflow: hidden;
+}
+.projects {
+    width: 100vw;
+}
+.single-project{
+    padding: 10px;
+    overflow: hidden;
+}
+
+.project-thumb img {
+    width: 100%;
+    display: block;
 }
