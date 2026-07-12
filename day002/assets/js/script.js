@@ -17,10 +17,11 @@ function addAClass() {
 
 
 $(document).ready(function () {
-    $('.projects').slick({
-        slidesToShow: 3,
-        dots: true,
-        autoplay: true,
-
+    $(".owl-carousel").owlCarousel({
+        center: true,
+        items:2,
+        loop:true,
+        margin:40,
+        dots: true
     });
 });
