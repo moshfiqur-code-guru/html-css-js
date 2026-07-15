@@ -136,6 +136,7 @@ nav {
     display: block;
     transition: 300ms;
 }
+
 .menu li a:hover {
     color: #999
 }
@@ -192,9 +193,11 @@ nav {
 }
 
 /*  ------------- OFFER SECTION ---- */
-#offer-section {}
+#offer-section {
+}
 
-.offer-list {}
+.offer-list {
+}
 
 .single-offer {
     padding: 10px;
@@ -207,7 +210,7 @@ nav {
     background: #ddd;
     padding: 20px;
     box-sizing: border-box;
-    transition: 500ms cubic-bezier(0,-0.64, 0.51, 1.66)
+    transition: 500ms cubic-bezier(0, -0.64, 0.51, 1.66)
 }
 
 .single-offer svg {
@@ -230,17 +233,20 @@ nav {
     color: #fff;
     padding: 10px;
     border-radius: 10px 0;
-    transition: 400ms cubic-bezier(0,-0.64, 0.51, 1.66);
+    transition: 400ms cubic-bezier(0, -0.64, 0.51, 1.66);
 
 }
+
 .single-offer a:hover {
     background: blue;
     border-radius: 0px 10px;
 
 }
+
 .single-offer div:hover {
     scale: 1.1;
 }
+
 #range-of-service {
     background: #e3ff04;
     position: relative;
@@ -291,29 +297,30 @@ nav {
 }
 
 
-
 .animate__animated.animate__bounce {
-  --animate-duration: 3s;
-  animation-iteration-count: infinite;
+    --animate-duration: 3s;
+    animation-iteration-count: infinite;
 }
-
-
 
 
 /**/
 .projects.owl-carousel.owl-theme .owl-dots {
     margin-top: 100px;
 }
+
 .project-thumb {
     overflow: hidden;
 }
+
 .project-thumb img {
     transition: 400ms ease-in-out;
 }
+
 .single-project:hover img {
     transform: scale(1.04);
     transform-origin: top right;
 }
+
 .project-details {
     position: absolute;
     left: 0;
@@ -329,11 +336,13 @@ nav {
     color: #fff;
     z-index: 999;
 }
+
 .project-details .branding {
     font-size: 16px;
     display: block;
     margin-bottom: 30px;
 }
+
 .project-details .branding-title {
     font-size: 30px;
     font-weight: 600;
@@ -345,6 +354,7 @@ nav {
     height: 450px;
 
 }
+
 .play-button {
     background: #ddd;
     width: 150px;
@@ -364,24 +374,28 @@ nav {
     cursor: pointer;
     transition: .3s linear;
 }
-.play-button:hover{
-    transform: translate(-50%, -50%)  scale(1.07);
+
+.play-button:hover {
+    transform: translate(-50%, -50%) scale(1.07);
 }
+
 .video-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0,.8);
+    background: rgba(0, 0, 0, .8);
     justify-content: center;
     align-items: center;
     z-index: 999;
     display: none;
 }
+
 .video-overlay.show {
     display: flex;
 }
+
 #video-wrapper {
     width: 1000px;
     height: 550px;
@@ -389,6 +403,7 @@ nav {
     background: #fafcf8;
     z-index: 1;
 }
+
 #video-wrapper img {
     position: absolute;
     left: 50%;
@@ -396,10 +411,12 @@ nav {
     transform: translate(-50%, -50%);
     z-index: -1;
 }
+
 #video-wrapper iframe {
     width: 100%;
     height: 100%;
 }
+
 #video-wrapper .close {
     position: absolute;
     top: 12px;
@@ -410,49 +427,184 @@ nav {
     cursor: pointer;
     z-index: 9999;
 }
+
 /* ACHIEVEMENT SECTION */
 #achievement-section.section {
     padding-top: 0;
 }
-.container.achievement-container{
+
+.container.achievement-container {
     width: 55%;
 }
+
 .year-wise-achievement {
     border-bottom: 2px solid #000;
     padding: 30px 0;
 
 }
+
 /*.year-wise-achievement:nth-of-type(1){*/
 /*    border-top: 2px solid #000;*/
 /*}*/
-.achievement-listing:first-child{
+.achievement-listing:first-child {
     border-top: 2px solid #000;
 }
+
 .year-wise-achievement .year {
     font-weight: 700;
     font-size: 17px;
     transition: 0.4s linear;
 }
-.year-wise-achievement .project-name{
+
+.year-wise-achievement .project-name {
     transition: 0.4s linear;
 }
-.year-wise-achievement .project-name h3{
+
+.year-wise-achievement .project-name h3 {
     font-size: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
-.year-wise-achievement .project-name span{
+
+.year-wise-achievement .project-name span {
     font-size: 16px;
 }
+
 .year-wise-achievement .author {
     font-weight: 700;
     font-size: 16px;
     text-transform: uppercase;
     transition: 0.4s linear;
 }
-.year-wise-achievement:hover .year,.year-wise-achievement:hover .project-name{
+
+.year-wise-achievement:hover .year, .year-wise-achievement:hover .project-name {
     transform: translateX(50px);
 }
 
-.year-wise-achievement:hover .author{
+.year-wise-achievement:hover .author {
     transform: translateX(-50px);
 }
+
+
+/* news and article section */
+.news-list {
+    width: 83%;
+    margin: auto;
+}
+
+.single-news img {
+    display: block;
+    width: 100%;
+}
+
+.single-news {
+    width: 33.33%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.summary {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(transparent, black 91%);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    color: #fff;
+    box-sizing: border-box;
+    justify-content: flex-end;
+}
+
+.published-date {
+    font-size: 18px;
+}
+
+.news-title {
+    margin: 15px 0;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.view-details {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 19px;
+    color: #fff;
+    width: 138px;
+    overflow: hidden;
+    letter-spacing: 3px;
+    position: relative;
+    height: 47px;
+}
+
+span.read-effect {
+    display: block;
+    transform: translateY(20px);
+    transition: 400ms;
+}
+
+a.view-details:hover .read-effect:nth-of-type(1) {
+    visibility: hidden;
+    opacity: 0;
+}
+
+a.view-details:hover .read-effect {
+    transform: translateY(-5px);
+}
+
+span.solid-border {
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    display: block;
+}
+
+span.border-wrapper {
+    width: 100%;
+    display: block;
+    height: 2px;
+    position: relative;
+}
+
+span.dotted-border {
+    display: flex;
+    margin-left: -305px;
+    transition: 600ms;
+}
+
+span.min {
+    width: 30%;
+    display: block;
+    height: 2px;
+    background: #fff;
+    transition: 600ms;
+}
+
+span.max {
+    width: 100%;
+    background: #fff;
+    height: 2px;
+    display: block;
+    margin-right: 40px;
+    transition: 600ms;
+}
+
+.view-details:hover span.dotted-border {
+    margin-left: 0;
+}
+
+.view-details:hover span.max {
+    margin-right: 0px;
+}
+
+
+.view-details:hover span.min {
+    width: 0;
+}
+
+.view-details:hover span.solid-border {
+    display: none;
+}
+
