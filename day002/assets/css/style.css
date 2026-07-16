@@ -10,6 +10,7 @@ ul {
     list-style: none;
 }
 
+
 a {
     text-decoration: none;
 }
@@ -68,6 +69,22 @@ body {
 
 .relative {
     position: relative;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.bg-dark {
+    background: #000;
+}
+
+.text-white {
+    color: #fff
+}
+
+.block {
+    display: block;
 }
 
 /*
@@ -536,22 +553,23 @@ nav {
     overflow: hidden;
     letter-spacing: 3px;
     position: relative;
-    height: 47px;
+    height: 22px;
+}
+
+.animated-border {
+    width: 138px;
+    overflow: hidden;
+    position: relative;
 }
 
 span.read-effect {
     display: block;
-    transform: translateY(20px);
     transition: 400ms;
 }
 
-a.view-details:hover .read-effect:nth-of-type(1) {
-    visibility: hidden;
-    opacity: 0;
-}
 
 a.view-details:hover .read-effect {
-    transform: translateY(-5px);
+    transform: translateY(-23px);
 }
 
 span.solid-border {
@@ -591,20 +609,75 @@ span.max {
     transition: 600ms;
 }
 
-.view-details:hover span.dotted-border {
+.view-details:hover + .animated-border span.dotted-border {
     margin-left: 0;
 }
 
-.view-details:hover span.max {
+.view-details:hover + .animated-border span.max {
     margin-right: 0px;
 }
 
 
-.view-details:hover span.min {
+.view-details:hover + .animated-border span.min {
     width: 0;
 }
 
-.view-details:hover span.solid-border {
+.view-details:hover + .animated-border span.solid-border {
     display: none;
 }
 
+.partner-list {
+    width: 66%;
+    margin: auto;
+    padding-top: 150px;
+}
+
+.partner-list li {
+    width: 25%;
+}
+
+
+.partner-item-wrapper {
+    border-left: 2px solid #000;
+    border-top: 2px solid #000;
+    text-align: center;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.partner-list ul {
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+}
+
+span.effect {
+    height: 37px;
+    overflow: hidden;
+}
+
+.client-effect {
+    transition: 200ms linear;
+    display: block;
+}
+
+.partner-list li:hover .client-effect {
+    transform: translateY(-40px);
+}
+
+
+/* lets-talk-section */
+#lets-talk-section {
+    background: #e3ff04
+}
+
+.sub-title {
+    font-size: 20px;
+}
+
+.lets-talk-btn {
+    padding: 20px;
+    display: inline-block;
+    margin-top: 50px;
+}
