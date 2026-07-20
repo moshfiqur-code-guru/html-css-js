@@ -789,8 +789,18 @@ span.effect {
 .scroll-top {
     position: fixed;
     right: 50px;
-    bottom: 50px;
+    bottom: -150px;
     z-index: 9999;
+    transform: scale(0);
+    transition: 400ms linear;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.scroll-top.show {
+    visibility: visible;
+    transform: scale(1);
+    bottom: 50px
 }
 
 .scroll-top svg.progress-circle {
@@ -811,7 +821,7 @@ span.effect {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid #ddd;
+    border: 2px solid #eee;
     z-index: -2;
 }
 

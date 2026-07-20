@@ -48,5 +48,47 @@ input.addEventListener("input", () => {
         sendBtn.classList.remove("disabled")
         input.classList.remove("disabled")
     }
-})
+});
+
+
+/*
+* SCROLL TOP ANIMATION & SCROLLING
+* PROGRESS DETECTION
+*  */
+
+const path = document.querySelector(".progress-circle path");
+const totalLength = path.getTotalLength();
+const scrollTopBtn = document.querySelector(".scroll-top");
+path.style.strokeDasharray = totalLength
+path.style.strokeDashoffset = totalLength;
+
+function toggleVisible(top, height) {
+    if (top > height) {
+        scrollTopBtn.classList.add("show")
+    } else {
+        scrollTopBtn.classList.remove("show")
+    }
+}
+
+function scrollToTopOnClick() {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+}
+
+function updateScrollProgress() {
+    const currentScrollPos = scrollY;
+    const screenHeight = innerHeight;
+    toggleVisible(currentScrollPos, screenHeight)
+    const docTotalHeight = document.documentElement.scrollHeight;
+    const scrollableHeight = docTotalHeight - screenHeight;
+    const scrollPosition = currentScrollPos / scrollableHeight;
+    const alreadyProgressed = scrollPosition * totalLength;
+    const progressable = totalLength - alreadyProgressed;
+    path.style.strokeDashoffset = progressable;
+
+}
+
+updateScrollProgress();
+window.addEventListener("scroll", updateScrollProgress)
+scrollTopBtn.addEventListener("click", scrollToTopOnClick)
+
 
