@@ -157,4 +157,84 @@ console.log(typeOfUser)
 
 let userType = username ?? "Guest"
 console.log(userType)
+let expectedAmount;
+let amountGotPreviously = 100;
+expectedAmount = null
 
+let resultAmount = amountGotPreviously * (expectedAmount ?? 1);
+console.log(resultAmount)
+
+/*let fatherName = "Badsha";
+let motherName = "Moriom";
+let numberOfChildren = 1;*/
+
+let familyOne = {
+    fatherName: "Badsha",
+    motherName: "Moriam",
+    numberOfChildren: 1,
+    isRegistered: true
+}
+let familyTwo = {
+    fatherName: "Sadirul",
+    motherName: "Ayesha",
+    numberOfChildren: 5
+}
+//let familyTwo = new Object({})
+// familyOne.fatherName = "Badsha";
+// familyOne.motherName = "Moriom";
+// familyOne.numberOfChildren = 1;
+
+//Object.assign(familyOne, {fatherName: "", motherName: ""})
+//console.log(familyOne)
+
+console.log(familyTwo.numberOfChildren)
+console.log(familyOne.fatherName)
+
+console.log(familyOne["motherName"])
+familyOne["numberOfRoom"] = 10;
+console.log(familyOne.numberOfRoom)
+
+let bio = familyOne.fatherName + ", " + familyOne.motherName + ", " + familyOne?.numberOfChildren
+console.log(bio)
+let expenditure = {
+    electricityBill: 500,
+    tutionBill: {
+        teacher1: 300
+    },
+}
+
+let totalExpenditure = expenditure.electricityBill + expenditure.tutionBill.teacher1 + (expenditure?.TA ? expenditure?.TA : 0)
+console.log(totalExpenditure)
+
+if ("isRegistered" in familyOne && familyOne["isRegistered"]) {
+    console.log(familyOne["fatherName"])
+}
+
+
+delete familyOne.isRegistered;
+console.log(familyOne)
+
+console.log(void 0)
+console.log(void (10 + 30))
+
+//let obj = new Object()
+let date = new Date();
+console.log(date.getUTCFullYear())
+
+let requiredNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+let demoArray = new Array([1, 2, 3, 4])
+console.log(typeof requiredNumbers)
+console.log(requiredNumbers[10])
+console.log(requiredNumbers[0])
+console.log(requiredNumbers[5])
+
+let arrayOfFamilies = [familyOne, familyTwo];
+console.log(arrayOfFamilies[0].fatherName);
+
+
+requiredNumbers[11] = 40;
+requiredNumbers.push(20)
+requiredNumbers.pop()
+requiredNumbers.unshift(20)
+requiredNumbers.shift()
+console.log(requiredNumbers)
