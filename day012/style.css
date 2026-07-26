@@ -1,0 +1,37 @@
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.orange {
+    color: orange;
+}
+
+fieldset {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 400px;
+}
+
+form label {
+    display: block;
+    margin: 6px 0;
+    font-size: 16px;
+}
+
+form input {
+    padding: 10px 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form input[type='submit'] {
+    width: 300px;
+    display: block;
+    margin: 20px auto;
+    background: skyblue;
+    color: #fff;
+}
