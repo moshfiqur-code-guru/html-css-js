@@ -9,53 +9,98 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Hello javascript</h1>
-<p>We are learning javascript fundamental</p>
-<h1 id="result" class="res"></h1>
-<h1 class="calculation">Mosfique: </h1>
-<h1 class="calculation1">Rubel: </h1>
+<!--<h1>Hello javascript</h1>-->
+<!--<p>We are learning javascript fundamental</p>-->
+<!--<h1 id="result" class="res"></h1>-->
+<!--<h1 class="calculation">Mosfique: </h1>-->
+<!--<h1 class="calculation1">Rubel: </h1>-->
 
 <div class="form">
-    <fieldset>
-        <legend>Please Register Here</legend>
-        <form method="post" onsubmit="formSubmission()" name="register">
-            <div>
-                <label for="firstName">First Name: </label>
-                <input type="text" name="firstName" id="firstName" placeholder="Enter first name"/>
+    <h1 class="text-center">User Registration System</h1>
+    <div id="error"></div>
+    <div id="content">
+        <div id="main-content" class="dashboard text-center">
+            <h1 id="welcome">Welcome, Mr. </h1>
+            <p>You're successfully logged in. This is your dashboard</p>
+            <h3 id="current-timestamp"></h3>
+            <div class="text-center">
+                <button onclick="doLogout()">Logout</button>
             </div>
-            <div>
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" placeholder="Enter last name" name="lastName"/>
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter email" name="email"/>
-            </div>
-            <div>
-                <label for="username">Username</label>
-                <input id="username" type="text" placeholder="Enter username" name="username"/>
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter password" name="password"/>
-            </div>
+        </div>
+        <div id="registration-form">
+            <fieldset>
+                <legend>Please Register Here</legend>
+                <form method="post" onsubmit="userRegistration()" name="register">
+                    <div>
+                        <label for="firstName">First Name: </label>
+                        <input type="text" name="firstName" id="firstName" placeholder="Enter first name"/>
+                    </div>
+                    <div>
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" placeholder="Enter last name" name="lastName"/>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter email" name="email"/>
+                    </div>
+                    <div>
+                        <label for="username">Username</label>
+                        <input id="username" type="text" placeholder="Enter username" name="username"/>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter password" name="password"/>
+                    </div>
 
-            <div>
-                <label for="confirmPassword">Confirm password</label>
-                <input type="password" id="confirmPassword" placeholder="Confirm password" name="confirmpassword"/>
-            </div>
+                    <div>
+                        <label for="confirmPassword">Confirm password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm password"
+                               name="confirmpassword"/>
+                    </div>
 
-            <div class="submit">
-                <input type="submit" value="REGISTER"/>
-                <button onclick="clean()">Clear</button>
-            </div>
 
-        </form>
-    </fieldset>
+                    <div class="submit">
+                        <div class="flex flex-center">
+                            <input type="submit" value="REGISTER"/>
+                            <button onclick="clean()" type="button">Clear</button>
+                        </div>
+                        <p>Already registered? Please <a href="#">Login</a></p>
+                    </div>
 
+                </form>
+            </fieldset>
+
+        </div>
+        <div id="login-form">
+            <fieldset>
+                <legend>Please Login Here</legend>
+                <form method="post" onsubmit="doLogin()" name="login">
+                    <div>
+                        <label for="user-name">Username: </label>
+                        <input type="text" name="username" id="user-name" placeholder="Username"/>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id="user-password" placeholder="Enter password" name="password"/>
+                    </div>
+
+                    <div class="submit">
+                        <div class="flex flex-center">
+                            <input type="submit" value="Login"/>
+                            <button onclick="clean()" type="button">Clear</button>
+                        </div>
+                        <p>Not yet registered? Please <a href="#">Registration</a> first</p>
+                    </div>
+
+                </form>
+            </fieldset>
+
+        </div>
+    </div>
 </div>
 
 
-<script src="script.js"></script>
+<!--<script src="script.js"></script>-->
+<script src="script002.js"></script>
 </body>
 </html>
