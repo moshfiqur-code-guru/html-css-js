@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="form">
+    <h1 class="text-center">User Registration Systems</h1>
+    <div id="error"></div>
+    <div id="content">
+        <div class="tabs flex flex-center">
+            <button onclick="showLogin()">LOGIN FORM</button>
+            <button onclick="showPractice()">My Practice</button>
+        </div>
+        <div id="login-form">
+            <fieldset>
+                <legend>Please Login Here</legend>
+                <form method="post" onsubmit="doLogin()" name="login">
+                    <div>
+                        <label for="user-name">Username: </label>
+                        <input type="text" name="username" id="user-name" placeholder="Username"/>
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <div class="password-field">
+                            <input type="password" id="user-password" placeholder="Enter password" name="password"
+                                   id="password"/>
+                            <div class="toggle">
+                                <div class="show" onclick="showPassword()">show</div>
+                                <div class="hide" onclick="hidePassword()">hide</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="submit">
+                        <div class="flex flex-center">
+                            <input type="submit" value="Login"/>
+                            <button onclick="clean()" type="button">Clear</button>
+                        </div>
+                        <p>Not yet registered? Please <a href="#">Registration</a> first</p>
+                    </div>
+
+                </form>
+            </fieldset>
+
+        </div>
+        <div id="practice">
+            <div id="response" class="text-center">
+                <h1>Response: </h1>
+                <ul id="fruits"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
