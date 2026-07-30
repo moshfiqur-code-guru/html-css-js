@@ -1,3 +1,49 @@
+/* ==================================COMMON STYLES===================================== */
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+.block {
+    display: block;
+}
+
+.text-center {
+    text-align: center;
+}
+
 .green {
     color: green;
 }
@@ -9,6 +55,9 @@
 .orange {
     color: orange;
 }
+
+
+/* =============================LOGIN FORM============================= */
 
 fieldset {
     width: 70%;
@@ -23,18 +72,22 @@ form label {
 }
 
 form input {
-    padding: 10px 5px;
     width: 100%;
+    padding: 10px 5px;
     box-sizing: border-box;
 }
 
-form input[type='submit'] {
+form input[type="submit"] {
+    width: 300px;
+    margin-right: 10px;
     display: block;
     background: skyblue;
     color: #fff;
-    width: 300px;
-    margin-right: 10px;
     cursor: pointer;
+}
+
+.submit {
+    margin-top: 20px;
 }
 
 .submit button {
@@ -42,23 +95,7 @@ form input[type='submit'] {
     padding: 0;
 }
 
-.flex {
-    display: flex;
-}
-
-.flex-center {
-    justify-content: center;
-}
-
-.submit {
-    margin-top: 20px;
-}
-
 .submit p {
-    text-align: center;
-}
-
-.text-center {
     text-align: center;
 }
 
@@ -67,6 +104,13 @@ input::placeholder {
     font-size: 14px;
 }
 
+input:focus-visible {
+    outline: none;
+}
+
+
+/* ===========================ERROR MESSAGE========================== */
+
 #error {
     color: red;
     text-align: center;
@@ -74,11 +118,8 @@ input::placeholder {
     margin-bottom: 20px;
 }
 
-.tabs button {
-    margin: 0 10px;
-    cursor: pointer;
-}
 
+/* ========================PASSWORD FIELD========================== */
 
 .password-field {
     position: relative;
@@ -86,8 +127,8 @@ input::placeholder {
 
 .toggle {
     position: absolute;
-    right: 70px;
     top: 10px;
+    right: 70px;
     cursor: pointer;
 }
 
@@ -99,49 +140,59 @@ input::placeholder {
     display: none;
 }
 
+
+/* ===========================RESULT========================= */
+
 #result {
+    width: 100%;
     border: none;
     font-size: 14px;
-    width: 100%;
     text-align: center;
 }
 
-input:focus-visible {
-    outline: none;
+
+/* ==============================TABS============================ */
+
+.tabs button {
+    margin: 0 10px;
+    cursor: pointer;
 }
 
 
-.sidebar {
-    background: #999;
-    width: 300px;
-    width: 300px;
-}
 
-body {
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
+
+/* #####################################################################################################
+########################################################################################################
+######################################################################################################## */
+
+
+
+
+/* ==========================DASHBOARD============================ */
 
 .dashboard {
-    background: #D6D6D6;
+    /* display: none; */
     height: 100vh;
-    display: none;
+    background: #D6D6D6;
 }
 
-.main-content {
-    width: calc(100% - 300px);
-    padding: 20px;
-}
 
-.between {
+/* ============================= SIDEBAR ============================ */
+
+.sidebar {
+    width: 300px;
+    padding: 20px 0;
+    box-sizing: border-box;
+    background: #999;
+
     justify-content: space-between;
+    align-items: center;
 }
 
 .author {
     width: 100px;
-    text-align: center;
     margin: 20px auto;
+    text-align: center;
     border-radius: 50%;
     overflow: hidden;
 }
@@ -151,49 +202,26 @@ body {
     display: block;
 }
 
-.block {
-    display: block;
-}
-
 .author-name {
     font-size: 15px;
     font-weight: 700;
 }
 
-ul {
-    margin: 0;
-    padding: 0;
-}
-
-li {
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar {
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    box-sizing: border-box;
-}
-
 .sidebar ul li a {
-    color: #333;
-    font-size: 20px;
     display: block;
     padding: 10px 0;
+    color: #333;
+    font-size: 20px;
     transition: 400ms;
-
 }
 
 .sidebar ul li a:hover {
     color: #000;
+}
+
+/* ==============================MAIN CONTENT============================= */
+
+.main-content {
+    width: calc(100% - 300px);
+    padding: 20px;
 }

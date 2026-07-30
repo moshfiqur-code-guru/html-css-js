@@ -1,106 +1,109 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="form">
+    <div class="form">
 
-    <div id="content">
+        <div id="content">
 
-        <div class="dashboard flex" id="student-management">
-            <div class="sidebar flex-column">
-                <div>
-                    <div class="author">
-                        <img src="author.jpeg" alt="Author"/>
+            <div class="dashboard flex" id="student-management">
+                <div class="sidebar flex-column">
+                    <div>
+                        <div class="author">
+                            <img src="author.jpeg" alt="Author" />
+                        </div>
+                        <span class="text-center block author-name">MR. RUBEL</span>
                     </div>
-                    <span class="text-center block author-name">MR. RUBEL</span>
+                    <div class="menu">
+                        <ul>
+                            <li><a href="#">Students</a></li>
+                            <li><a href="#">Class</a></li>
+                            <li><a href="#">Teachers</a></li>
+                            <li><a href="#">Marksheet</a></li>
+                            <li><a href="#">Guardians</a></li>
+                            <li><a href="#">Managements</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer">
+                        <span>&COPY; Copyright, 2026</span>
+                    </div>
                 </div>
-                <div class="menu">
-                    <ul>
-                        <li><a href="#">Students</a></li>
-                        <li><a href="#">Class</a></li>
-                        <li><a href="#">Teachers</a></li>
-                        <li><a href="#">Marksheet</a></li>
-                        <li><a href="#">Guardians</a></li>
-                        <li><a href="#">Managements</a></li>
-                    </ul>
-                </div>
-                <div class="footer">
-                    <span>&COPY; Copyright, 2026</span>
+                <div class="main-content">
+                    <div class="header flex between">
+                        <div class="title">
+                            <a href="#">Dashboard</a>
+                        </div>
+                        <div class="header-menu">
+                            <a href="#">Settings</a>
+                            <a href="#">Notifications</a>
+                            <a href="#">Logout</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="main-content">
-                <div class="header flex between">
-                    <div class="title">
-                        <a href="#">Dashboard</a>
-                    </div>
-                    <div class="header-menu">
-                        <a href="#">Settings</a>
-                        <a href="#">Notifications</a>
-                        <a href="#">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div id="login-form">
-            <h1 class="text-center">User Registration Systems</h1>
+            <div id="login-form">
+                <h1 class="text-center">User Registration Systems</h1>
 
-            <div id="error"></div>
-            <fieldset>
-                <legend>Please Login Here</legend>
-                <form method="post" onsubmit="doLogin()" name="login">
-                    <div>
-                        <label for="user-name">Username: </label>
-                        <input type="text" name="username" id="user-name" placeholder="Username"/>
-                    </div>
-                    <div>
-                        <label for="password">Password</label>
-                        <div class="password-field">
-                            <input type="password" id="user-password" placeholder="Enter password" name="password"
-                                   id="password"/>
-                            <div class="toggle">
-                                <div class="show" onclick="showPassword()">show</div>
-                                <div class="hide" onclick="hidePassword()">hide</div>
+                <div id="error"></div>
+                <fieldset>
+                    <legend>Please Login Here</legend>
+                    <form method="post" onsubmit="doLogin()" name="login">
+                        <div>
+                            <label for="user-name">Username: </label>
+                            <input type="text" name="username" id="user-name" placeholder="Username" />
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <div class="password-field">
+                                <input type="password" id="user-password" placeholder="Enter password" name="password"
+                                    id="password" />
+                                <div class="toggle">
+                                    <div class="show" onclick="showPassword()">show</div>
+                                    <div class="hide" onclick="hidePassword()">hide</div>
+                                </div>
                             </div>
+
                         </div>
 
-                    </div>
-
-                    <div class="submit">
-                        <div class="flex flex-center">
-                            <input type="submit" value="Login"/>
-                            <button onclick="clean()" type="button">Clear</button>
+                        <div class="submit">
+                            <div class="flex flex-center">
+                                <input type="submit" value="Login" />
+                                <button onclick="clean()" type="button">Clear</button>
+                            </div>
+                            <p>Not yet registered? Please <a href="#">Registration</a> first</p>
                         </div>
-                        <p>Not yet registered? Please <a href="#">Registration</a> first</p>
-                    </div>
 
-                </form>
-            </fieldset>
+                    </form>
+                </fieldset>
+            </div>
+
+            <!--        <div class="text-center">-->
+            <!--            <div>-->
+            <!--                <input type="text" name="result" id="result"/>-->
+            <!--                <br/>-->
+            <!--                <br/>-->
+            <!--                <input type="number" name="givenNumber" value="10" id="givenNumber"/>-->
+            <!--                &lt;!&ndash;                <button onclick="checkEvenOdd( document.getElementById('givenNumber').value )">Check</button>&ndash;&gt;-->
+            <!--                <button id="checkBtn">Even/Odd</button>-->
+            <!--                <button id="checkPrimeBtn">Is Prime</button>-->
+            <!--            </div>-->
+            <!--        </div>-->
+
         </div>
-
-        <!--        <div class="text-center">-->
-        <!--            <div>-->
-        <!--                <input type="text" name="result" id="result"/>-->
-        <!--                <br/>-->
-        <!--                <br/>-->
-        <!--                <input type="number" name="givenNumber" value="10" id="givenNumber"/>-->
-        <!--                &lt;!&ndash;                <button onclick="checkEvenOdd( document.getElementById('givenNumber').value )">Check</button>&ndash;&gt;-->
-        <!--                <button id="checkBtn">Even/Odd</button>-->
-        <!--                <button id="checkPrimeBtn">Is Prime</button>-->
-        <!--            </div>-->
-        <!--        </div>-->
-
     </div>
-</div>
 
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
