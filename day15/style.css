@@ -58,11 +58,45 @@ li {
 
 
 /* =============================LOGIN FORM============================= */
+#login-form {
+    background: url("loginbg.jpg") no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+
+}
+
+#login-form:after {
+    background: #fff;
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.form-wrapper {
+    background: #fff;
+    padding: 30px 0;
+    box-shadow: 10px -1px 21px -3px rgba(0, 0, 0, 0.58);
+    -webkit-box-shadow: 10px -1px 21px -3px rgba(0, 0, 0, 0.58);
+    -moz-box-shadow: 10px -1px 21px -3px rgba(0, 0, 0, 0.58);
+}
+
+#login-form h1 {
+    margin-top: 0;
+}
 
 fieldset {
-    width: 70%;
+    width: 30%;
     margin: auto;
-    margin-bottom: 100px;
 }
 
 form label {
@@ -130,6 +164,8 @@ input:focus-visible {
     top: 10px;
     right: 70px;
     cursor: pointer;
+    color: #000;
+
 }
 
 .toggle div {
@@ -159,19 +195,14 @@ input:focus-visible {
 }
 
 
-
-
 /* #####################################################################################################
 ########################################################################################################
 ######################################################################################################## */
 
 
-
-
 /* ==========================DASHBOARD============================ */
 
 .dashboard {
-    /* display: none; */
     height: 100vh;
     background: #D6D6D6;
 }
@@ -225,3 +256,7 @@ input:focus-visible {
     width: calc(100% - 300px);
     padding: 20px;
 }
+
+/*
+
+*/
