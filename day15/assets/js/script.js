@@ -108,8 +108,47 @@ function logout() {
 }
 
 
+function toggleVisible(type) { //text/password
+    const show = document.querySelector(".show");
+    const hide = document.querySelector(".hide");
+    document.getElementById("user-password").setAttribute("type", type);
+    if (type === "text") {
+        hide.style.display = "block"
+        show.style.display = "none"
+    } else {
+        hide.style.display = "none"
+        show.style.display = "block"
+    }
+}
 
+function addMenus() {
+    document.querySelector(".menu").innerHTML = `
+    <ul>
+                        <li class="students"><a href="students.html">Students</a></li>
+                        <li class="class"><a href="class.html">Class</a></li>
+                        <li class="teachers"><a href="teachers.html">Teachers</a></li>
+                        <li class="marksheet"><a href="marksheet.html">Marksheet</a></li>
+                        <li class="guardians"><a href="guardians.html">Guardians</a></li>
+                        <li class="managements"><a href="managements.html">Managements</a></li>
+                        <li class="calculator"><a href="calculator.html">Calculator</a></li>
+                        <li class="switch"><a href="switch.html">Switch</a></li>
+                    </ul>
+    `;
+    // const arrayOfMenu = ["students", "class", "teachers", "marksheet", "guardians", "calculator", "switch"];
+    // for (let i = 0; i < arrayOfMenu.length; i++){
+    //     document.querySelector(".menu").appendChild(`<li class="${arrayOfMenu[i]}"><a href="students.html">${arrayOfMenu[i]}</a></li>`)
+    // }
+}
 
+addMenus()
 
+function activeMenu() {
+    const currentLocation = location.href;
+    //calculator.html
+    //["calculator", "html"]
+    let lastPart = currentLocation.split("/").pop().split(".")[0];
+    document.querySelector(".menu ul li." + lastPart).classList.add("active")
+}
 
+activeMenu();
 

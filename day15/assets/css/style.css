@@ -59,7 +59,7 @@ li {
 
 /* =============================LOGIN FORM============================= */
 #login-form {
-    background: url("loginbg.jpg") no-repeat center center/cover;
+    background: url("assets/loginbg.jpg") no-repeat center center/cover;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -107,8 +107,9 @@ form label {
 
 form input {
     width: 100%;
-    padding: 10px 5px;
+    padding: 10px 5px 10px 35px;
     box-sizing: border-box;
+    font-size: 18px;
 }
 
 form input[type="submit"] {
@@ -136,6 +137,7 @@ form input[type="submit"] {
 input::placeholder {
     color: #999;
     font-size: 14px;
+    display: block;
 }
 
 input:focus-visible {
@@ -161,11 +163,17 @@ input:focus-visible {
 
 .toggle {
     position: absolute;
-    top: 10px;
-    right: 70px;
+    top: 0;
+    right: 0;
     cursor: pointer;
     color: #000;
-
+    font-size: 20px;
+    width: 48px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
 }
 
 .toggle div {
@@ -178,13 +186,6 @@ input:focus-visible {
 
 
 /* ===========================RESULT========================= */
-
-#result {
-    width: 100%;
-    border: none;
-    font-size: 14px;
-    text-align: center;
-}
 
 
 /* ==============================TABS============================ */
@@ -257,6 +258,29 @@ input:focus-visible {
     padding: 20px;
 }
 
-/*
+.relative {
+    position: relative;
+}
 
-*/
+.user-icon {
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translate(0px, -50%);
+    color: #666;
+    font-size: 21px;
+}
+
+.header-menu a {
+    color: #444;
+    font-size: 17px;
+    margin: 0 13px;
+}
+
+.header-menu a:last-child {
+    margin-right: 0;
+}
+
+.menu ul li.active a {
+    color: #000;
+}
