@@ -122,22 +122,35 @@ function toggleVisible(type) { //text/password
 }
 
 function addMenus() {
-    document.querySelector(".menu").innerHTML = `
-    <ul>
-                        <li class="students"><a href="students.html">Students</a></li>
-                        <li class="class"><a href="class.html">Class</a></li>
-                        <li class="teachers"><a href="teachers.html">Teachers</a></li>
-                        <li class="marksheet"><a href="marksheet.html">Marksheet</a></li>
-                        <li class="guardians"><a href="guardians.html">Guardians</a></li>
-                        <li class="managements"><a href="managements.html">Managements</a></li>
-                        <li class="calculator"><a href="calculator.html">Calculator</a></li>
-                        <li class="switch"><a href="switch.html">Switch</a></li>
-                    </ul>
-    `;
-    // const arrayOfMenu = ["students", "class", "teachers", "marksheet", "guardians", "calculator", "switch"];
-    // for (let i = 0; i < arrayOfMenu.length; i++){
-    //     document.querySelector(".menu").appendChild(`<li class="${arrayOfMenu[i]}"><a href="students.html">${arrayOfMenu[i]}</a></li>`)
-    // }
+    // document.querySelector(".menu").innerHTML = `
+    // // // <ul>
+    // // //                     <li class="students"><i class="fa-solid fa-user"></i><a href="students.html">Students</a></li>
+    // // //                     <li class="class"><i class="fa-solid fa-user"></i><a href="class.html">Class</a></li>
+    // // //                     <li class="teachers"><i class="fa-solid fa-user"></i><a href="teachers.html">Teachers</a></li>
+    // // //                     <li class="marksheet"><i class="fa-solid fa-user"></i><a href="marksheet.html">Marksheet</a></li>
+    // // //                     <li class="guardians"><i class="fa-solid fa-user"></i><a href="guardians.html">Guardians</a></li>
+    // // //                     <li class="managements"><i class="fa-solid fa-user"></i><a href="managements.html">Managements</a></li>
+    // // //                     <li class="calculator"><i class="fa-solid fa-user"></i><a href="calculator.html">Calculator</a></li>
+    // // //                     <li class="switch"><i class="fa-solid fa-user"></i><a href="switch.html">Switch</a></li>
+    // // //                 </ul>
+    // // // `;
+    // //arrayOfMenu[0]
+    //const arrayOfMenu = ["students", "class", "teachers", "marksheet", "guardians", "calculator", "switch", "sdepe"];
+    const menus = [{label: "students", icon: "user"}, {label: "class", icon: "user"}, {
+        label: "teachers",
+        icon: "user"
+    }, {label: "marksheet", icon: "user"}, {label: "guardians", icon: "user"}, {
+        label: "calculator",
+        icon: "user"
+    }, {label: "switch", icon: "user"},]
+    const ul = document.createElement("ul");
+    const menu = document.querySelector(".menu")
+    for (let i = 0; i < menus.length; i++) {
+        ul.innerHTML += `<li class="${menus[i].label}"><i class="fa-solid fa-${menus[i].icon}"></i><a href="${menus[i].label}.html">${menus[i].label}</a></li>`
+    }
+    //document.querySelector(".menu").innerHTML = ul.outerHTML;
+    menu.appendChild(ul)
+
 }
 
 addMenus()
@@ -147,7 +160,10 @@ function activeMenu() {
     //calculator.html
     //["calculator", "html"]
     let lastPart = currentLocation.split("/").pop().split(".")[0];
-    document.querySelector(".menu ul li." + lastPart).classList.add("active")
+    const currentItem = document.querySelector(".menu ul li." + lastPart);
+    if (currentItem !== null) {
+        document.querySelector(".menu ul li." + lastPart).classList.add("active")
+    }
 }
 
 activeMenu();

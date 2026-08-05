@@ -247,6 +247,12 @@ input:focus-visible {
     transition: 400ms;
 }
 
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .sidebar ul li a:hover {
     color: #000;
 }
@@ -283,4 +289,48 @@ input:focus-visible {
 
 .menu ul li.active a {
     color: #000;
+}
+
+.footer span {
+    font-size: 17px;
+}
+
+.mini-calculator {
+    border: 1px solid;
+    width: 400px;
+    margin: auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.mini-calculator h1 {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 0;
+}
+
+.results {
+    width: 100%;
+    overflow: hidden;
+}
+
+.results input {
+    box-sizing: border-box;
+
+}
+
+.results input#res {
+    width: 100%;
+    text-align: center;
+}
+
+.inputs input {
+    max-width: 49%;
+    box-sizing: border-box;
+    margin: 5px 0;
+}
+
+#buttons button {
+    width: 126px;
+    height: 76px;
 }
