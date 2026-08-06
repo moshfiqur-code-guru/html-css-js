@@ -13,30 +13,30 @@ const createButtons = () => {
     }
 }
 
-function doCalculation(operator) {
-    let result = "";
-    const fnum = document.getElementById("fnumber")
-    const snum = document.getElementById("snumber")
-    const resultDiv = document.getElementById("res");
-    let fnumberInt = Number(fnum.value);
-    let snumberInt = Number(snum.value);
-    if (operator === "+") {
-        result = fnumberInt + snumberInt;
-    } else if (operator === "-") {
-        result = fnumberInt - snumberInt;
-    } else if (operator === "x") {
-        result = fnumberInt * snumberInt;
-    } else if (operator === "/") {
-        result = fnumberInt / snumberInt;
-    } else if (operator === "%") {
-        result = fnumberInt % snumberInt;
-    } else {
-        fnum.value = "";
-        snum.value = "";
-        resultDiv.value = ""
-    }
-    resultDiv.value = result
-}
+// function doCalculation(operator) {
+//     let result = "";
+//     const fnum = document.getElementById("fnumber")
+//     const snum = document.getElementById("snumber")
+//     const resultDiv = document.getElementById("res");
+//     let fnumberInt = Number(fnum.value);
+//     let snumberInt = Number(snum.value);
+//     if (operator === "+") {
+//         result = fnumberInt + snumberInt;
+//     } else if (operator === "-") {
+//         result = fnumberInt - snumberInt;
+//     } else if (operator === "x") {
+//         result = fnumberInt * snumberInt;
+//     } else if (operator === "/") {
+//         result = fnumberInt / snumberInt;
+//     } else if (operator === "%") {
+//         result = fnumberInt % snumberInt;
+//     } else {
+//         fnum.value = "";
+//         snum.value = "";
+//         resultDiv.value = ""
+//     }
+//     resultDiv.value = result
+// }
 
 createButtons();
 
@@ -59,3 +59,35 @@ function useSwitch(operator) {
 }
 
 useSwitch("+")
+
+function doCalculation(operator) {
+    let result = "";
+    const fnum = document.getElementById("fnumber")
+    const snum = document.getElementById("snumber")
+    const resultDiv = document.getElementById("res");
+    let fnumberInt = Number(fnum.value);
+    let snumberInt = Number(snum.value);
+    switch (operator) {
+        case  "+":
+            result = fnumberInt + snumberInt;
+            break;
+        case "-":
+            result = fnumberInt - snumberInt;
+            break;
+        case "x":
+            result = fnumberInt * snumberInt;
+            break;
+        case "/":
+            result = fnumberInt / snumberInt;
+            break;
+        case "%":
+            result = fnumberInt % snumberInt;
+            break;
+        default:
+            fnum.value = "";
+            snum.value = "";
+            resultDiv.value = ""
+    }
+    resultDiv.value = result
+}
+
