@@ -36,6 +36,10 @@ li {
     justify-content: space-between;
 }
 
+.items-center {
+    align-items: center;
+}
+
 .block {
     display: block;
 }
@@ -202,9 +206,19 @@ input:focus-visible {
 
 
 /* ==========================DASHBOARD============================ */
+.layout {
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #99999996;
+}
 
-.dashboard {
-    height: 100vh;
+.layout.is-margin {
+    margin-bottom: 20px;
+}
+
+.dashboards {
+    min-height: 100vh;
     background: #D6D6D6;
 }
 
@@ -216,9 +230,12 @@ input:focus-visible {
     padding: 20px 0;
     box-sizing: border-box;
     background: #999;
-
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 0;
 }
 
 .author {
@@ -230,8 +247,10 @@ input:focus-visible {
 }
 
 .author img {
-    width: 100%;
     display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }
 
 .author-name {
@@ -245,6 +264,7 @@ input:focus-visible {
     color: #333;
     font-size: 20px;
     transition: 400ms;
+    text-transform: capitalize;
 }
 
 .sidebar ul li {
@@ -258,10 +278,14 @@ input:focus-visible {
 }
 
 /* ==============================MAIN CONTENT============================= */
+.main {
+    margin-top: 20px;
+}
 
 .main-content {
     width: calc(100% - 300px);
     padding: 20px;
+    margin-left: 300px;
 }
 
 .relative {
@@ -524,9 +548,6 @@ table th {
     padding: 10px 0;
 }
 
-.main {
-    padding: 50px
-}
 
 table button {
     border: none;
@@ -534,8 +555,13 @@ table button {
     cursor: pointer;
 }
 
+table, tr, td {
+    border-color: #ddd;
+    font-size: 15px;
+}
+
 .students-action {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .add-new-button button {
@@ -570,4 +596,12 @@ form.student-add-update-form select {
     display: block;
     width: 100%;
     padding: 10px 0;
+}
+
+.delete {
+    color: #e61919c4;
+}
+
+.edit {
+    color: #7e7ee5;
 }

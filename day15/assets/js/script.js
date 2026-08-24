@@ -49,7 +49,7 @@ function uuidv4() {
 const user = {
     id: uuidv4(),
     name: "John Doe",
-    image: "author.jpeg",
+    image: "user.jpeg",
     isLoggedIn: false,
     email: "john@gmail.com",
     password: "123456"
@@ -67,7 +67,14 @@ function userLoginStatus() {
     const user = getUserFromStorage();
     if (user && user.isLoggedIn) {
         if (location.href.includes("index.html")) {
-            location.href = "dashboard.html"
+            location.href = "dashboard.html";
+        }
+        let author = document.getElementById("author-image");
+        let img = document.createElement("img");
+        img.src = "assets/img/" + user.image;
+        img.alt = "Logged In User";
+        if (author !== null) {
+            author.innerHTML = img.outerHTML;
         }
     } else {
         if (!location.href.includes("index.html")) {
@@ -136,20 +143,25 @@ function addMenus() {
     // // // `;
     // //arrayOfMenu[0]
     //const arrayOfMenu = ["students", "class", "teachers", "marksheet", "guardians", "calculator", "switch", "sdepe"];
-    const menus = [{label: "students", icon: "user"}, {label: "class", icon: "user"}, {
-        label: "teachers",
-        icon: "user"
-    }, {label: "marksheet", icon: "user"}, {label: "guardians", icon: "user"}, {
-        label: "calculator",
-        icon: "user"
-    }, {label: "switch", icon: "user"},]
+    const menus = [
+        {label: "dashboard", icon: "dashboard"},
+        {label: "students", icon: "users"},
+        {label: "class", icon: "bars"}, {
+            label: "teachers",
+            icon: "user"
+        }, {label: "marksheet", icon: "file"}, {label: "guardians", icon: "home-user"}, {
+            label: "calculator",
+            icon: "calculator"
+        }, {label: "switch", icon: "arrows-rotate"},]
     const ul = document.createElement("ul");
     const menu = document.querySelector(".menu")
     for (let i = 0; i < menus.length; i++) {
         ul.innerHTML += `<li class="${menus[i].label}"><i class="fa-solid fa-${menus[i].icon}"></i><a href="${menus[i].label}.html">${menus[i].label}</a></li>`
     }
     //document.querySelector(".menu").innerHTML = ul.outerHTML;
-    menu.appendChild(ul)
+    if (menu !== null) {
+        menu.appendChild(ul)
+    }
 
 }
 
