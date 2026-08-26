@@ -535,6 +535,9 @@ table img {
     display: block;
     margin: auto;
     padding: 3px 0;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 table {
@@ -576,10 +579,20 @@ table, tr, td {
     display: none;
 }
 
-label.preview img {
+label.preview {
     width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: auto;
+    overflow: hidden;
+}
+
+label.preview img {
+    width: 100%;
+    height: 100%;
     display: block;
     margin: auto;
+    object-fit: cover;
 }
 
 form.student-add-update-form input {

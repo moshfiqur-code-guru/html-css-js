@@ -77,17 +77,17 @@
                                 <header class="modal__header">
                                     <h2 class="modal__title" id="modal-1-title"></h2>
                                     <button class="modal__close" aria-label="Close modal"
-                                            data-micromodal-close></button>
+                                            data-micromodal-close onclick="onModalClose()"></button>
                                 </header>
                                 <main class="modal__content" id="modal-1-content">
                                    <form class="student-add-update-form" id="studentForm">
                                         <label class="preview" for="student-image">
-                                            <img src="assets/img/author.jpeg" alt="author"/>
+                                            <img src="assets/img/author.jpeg" alt="author" id="thumbnail"/>
                                         </label>
-                                       <input class="picker" type="file" id="student-image"/>
+                                       <input class="picker" type="file" id="student-image" name="image" accept="image"/>
                                        <div>
-                                           <input type="text" name="firstname" placeholder="First Name"/>
-                                           <input type="text" name="lastname" placeholder="Last Name"/>
+                                           <input type="text" name="firstname" placeholder="First Name" id="firstName"/>
+                                           <input type="text" name="lastname" placeholder="Last Name" id="lastName"/>
                                            <select name="class">
                                                <option>---select a class---</option>
                                                <option value="10">Class 10</option>
