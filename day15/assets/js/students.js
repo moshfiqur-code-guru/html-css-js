@@ -9,6 +9,7 @@ const studentForm = document.getElementById("studentForm");
 const studentImagePicker = document.getElementById("student-image");
 const preview = document.getElementById("thumbnail");
 let editableIndex = null;
+let currentID = null;
 // const students = [{
 //     id: new Date().getMilliseconds(),
 //     firstname: "Tomas",
@@ -113,39 +114,81 @@ modalSaveButton.addEventListener("click", (event) => {
     event.preventDefault();
     const formData = new FormData(studentForm);
     const student = Object.fromEntries(formData);
+    let message = "saved";
     student["image"] = student.image?.name
+    student["id"] = currentID ?? new Date().getMilliseconds()
+    //validate student before save or update it
+    const validationError = validateStudent(student);
+    if (Object.keys(validationError).length === 0) {
+        //Only for updating student and
+        // need that editable index present
+        if (editableIndex !== null) {
+            students[editableIndex] = student;
+            currentID = null;
+            editableIndex = null;
+            message = "updated";
+        } else {
+            message = "saved";
+            students.push(student)
+        }
+        //save updated students in the storage
+        saveStudents();
+        //display again the updated students in the table
+        displayStudents();
+        //after saving or updating student resetting the form
+        studentForm.reset();
 
-    //Only for updating student and
-    // need that editable index present
-    if (editableIndex !== null) {
-        students[editableIndex] = student
+        //manual close of the modal once student saved or
+        // student update completed
+        MicroModal.close('modal-1')
+        Swal.fire({
+            title: "Success!",
+            //text: "Your data " + message + " successfully",
+            text: `Your data ${message}  successfully`,
+            icon: "success"
+        });
     } else {
-        // this is necessary only for creating new
-        student["id"] = new Date().getMilliseconds()
-        students.push(student)
+        alert("You did not fill all the input fields")
     }
-    //save updated students in the storage
-    saveStudents();
-    //display again the updated students in the table
-    displayStudents();
-    //after saving or updating student resetting the form
-    studentForm.reset();
-
-    MicroModal.close('modal-1')
 })
 
+//DELETE STUDENT BY INDEX NUMBER
 function deleteStudent(index, id) {
-    const confirmation = confirm("Are you sure to delete this student?");
-    if (!confirmation) return;
-    students.splice(index, 1);
-    saveStudents();
-    displayStudents();
+    // const confirmation = confirm("Are you sure to delete this student?");
+    // if (!confirmation) return;
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((confirmation) => {
+        if (confirmation.isConfirmed) {
+            //deleting student using index
+            students.splice(index, 1);
+            //save again with updated students
+            saveStudents();
+            //re-render student table
+            displayStudents();
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+        }
+    });
+
 }
 
+// EDITING STUDENT BY IT'S INDEX AND ID
 function editStudent(index, id) {
     modalTitle = "Update Student";
     modalButtonLabel = "Update";
     editableIndex = index;
+    currentID = id;
     setModalTitleAndButton();
     // const student = students.find((student) => {
     //     return student.id === id
@@ -166,18 +209,36 @@ function editStudent(index, id) {
         if (key !== "image" && key !== "id") {
             studentForm.elements[key].value = student[key]
         } else {
+            let url = "assets/img/" + student.image;
             if (key === "image") {
-                preview.src = "assets/img/" + student.image
+                preview.src = url;
             }
+            fetch(url).then(async (response) => {
+                const blob = await response.blob();
+                const file = new File(
+                    [blob],
+                    student.image,
+                    {
+                        type: blob.type
+                    }
+                );
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                studentImagePicker.files = dataTransfer.files;
+            })
         }
     });
 }
 
+//Setting dynamic modal title and button label
+//according to the save or edit button clicked
 function setModalTitleAndButton() {
     modalTitleElement.textContent = modalTitle;
     modalButtonElement.textContent = modalButtonLabel
 }
 
+//once reload the page
+//by default this method will set the default modal title and button label
 function setDefaultTitle() {
     modalTitle = "Add New Student";
     modalButtonLabel = "Add New";
@@ -185,9 +246,24 @@ function setDefaultTitle() {
     MicroModal.show('modal-1')
 }
 
+//programmable close of the modal
+//on click the close button
 function onModalClose() {
     preview.src = "assets/img/author.jpeg"
 }
 
+function validateStudent(student) {
+    const keys = Object.keys(student);
+    let error = {}
+    keys.forEach((key) => {
+        if (student[key].toString().trim() === "") {
+            error[key] = "Your " + key + "filed is empty";
+        }
+    })
+    return error;
+}
+
 //saveStudents()
 setModalTitleAndButton();
+
+

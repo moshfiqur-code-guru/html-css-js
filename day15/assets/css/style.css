@@ -576,7 +576,7 @@ table, tr, td {
 }
 
 .picker {
-    display: none;
+    /*display: none;*/
 }
 
 label.preview {
@@ -602,7 +602,7 @@ form.student-add-update-form input {
 }
 
 form.student-add-update-form input[type="file"] {
-    display: none;
+    /*display: none;*/
 }
 
 form.student-add-update-form select {
