@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
+    font-family: "Roboto", sans-serif;
 }
 
 a {
@@ -451,7 +452,8 @@ input:focus-visible {
     transition: transform .25s ease-out, -webkit-transform .25s ease-out;
 }
 
-.modal__btn:focus, .modal__btn:hover {
+.modal__btn:focus,
+.modal__btn:hover {
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
 }
@@ -469,6 +471,7 @@ input:focus-visible {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -478,6 +481,7 @@ input:focus-visible {
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
     }
@@ -487,6 +491,7 @@ input:focus-visible {
     from {
         transform: translateY(15%);
     }
+
     to {
         transform: translateY(0);
     }
@@ -496,6 +501,7 @@ input:focus-visible {
     from {
         transform: translateY(0);
     }
+
     to {
         transform: translateY(-10%);
     }
@@ -558,7 +564,9 @@ table button {
     cursor: pointer;
 }
 
-table, tr, td {
+table,
+tr,
+td {
     border-color: #ddd;
     font-size: 15px;
 }

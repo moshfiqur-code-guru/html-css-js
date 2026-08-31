@@ -76,7 +76,7 @@ function displayStudents() {
         <td>${index + 1}</td>
         <td>${student.firstname} ${student.lastname}</td>
         <td><img src="assets/img/${student.image}"/></td>
-        <td>${student.class}</td>
+        <td>${classLabels(Number(student.class))}</td>
         <td>${student.id}</td>
         <td>${student.email}</td>
         <td>${student.village}</td>
@@ -259,11 +259,24 @@ function validateStudent(student) {
         if (student[key].toString().trim() === "") {
             error[key] = "Your " + key + "filed is empty";
         }
-    })
+    });
     return error;
+}
+
+function classLabels(classValue){
+    const classes = {
+        10: "Ten",
+        9: "Nine",
+        8: "Eight",
+        7: "Seven",
+        6: "Six",
+        5: "Five"
+    }
+    return `Class ${classes[classValue]}`;
 }
 
 //saveStudents()
 setModalTitleAndButton();
+
 
 

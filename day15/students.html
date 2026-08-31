@@ -1,127 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="assets/fontawesome/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-<div class="form">
+    <div class="form">
 
-    <div id="content">
+        <div id="content">
 
-        <div class="dashboards flex" id="student-management">
-            <div class="sidebar flex-column">
-                <div>
-                    <div class="author" id="author-image"></div>
-                    <span class="text-center block author-name">MR. RUBEL</span>
-                </div>
-                <div class="menu"></div>
-                <div class="footer">
-                    <span>&COPY; Copyright, 2026</span>
-                </div>
-            </div>
-            <div class="main-content">
-                <div class="layout">
-                <div class="header flex between">
-                    <div class="title">
-                        <a href="javascript:void(0)">Students</a>
+            <div class="dashboards flex" id="student-management">
+                <div class="sidebar flex-column">
+                    <div>
+                        <div class="author" id="author-image"></div>
+                        <span class="text-center block author-name">MR. RUBEL</span>
                     </div>
-                    <div class="header-menu">
-                        <a href="#"><i class="fa-solid fa-bell"></i></a>
-                        <a href="#"><i class="fa-solid fa-gear"></i></a>
-                        <a href="javascript:void(0)" onclick="logout()"><i class="fa-solid fa-lock"></i>Logout</a>
+                    <div class="menu"></div>
+                    <div class="footer">
+                        <span>&COPY; Copyright, 2026</span>
                     </div>
                 </div>
-                </div>
-                <div class="main">
-                    <div class="students-list">
+                <div class="main-content">
+                    <div class="layout">
+                        <div class="header flex between">
+                            <div class="title">
+                                <a href="javascript:void(0)">Students</a>
+                            </div>
+                            <div class="header-menu">
+                                <a href="#"><i class="fa-solid fa-bell"></i></a>
+                                <a href="#"><i class="fa-solid fa-gear"></i></a>
+                                <a href="javascript:void(0)" onclick="logout()"><i
+                                        class="fa-solid fa-lock"></i>Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main">
+                        <div class="students-list">
 
-                        <div class="student-listing">
-                            <div class="layout is-margin">
-                                <div class="students-action flex between items-center">
-                                    <div class="searchbar">
-                                        <input type="text" placeholder="Search here..."/>
+                            <div class="student-listing">
+                                <div class="layout is-margin">
+                                    <div class="students-action flex between items-center">
+                                        <div class="searchbar">
+                                            <input type="text" placeholder="Search here..." />
+                                        </div>
+                                        <div class="add-new-button">
+                                            <button data-micromodal-trigger="modal-1" onclick="setDefaultTitle()">Add
+                                                New <i class="fa fa-solid fa-plus"></i></button>
+                                        </div>
                                     </div>
-                                    <div class="add-new-button">
-                                        <button data-micromodal-trigger="modal-1" onclick="setDefaultTitle()">Add New <i class="fa fa-solid fa-plus"></i></button>
-                                    </div>
-                                </div>
-                                <table border="1" align="center">
-                                    <tr>
-                                        <thead>
-                                        <th>SI</th>
-                                        <th>Name</th>
-                                        <th>Image</th>
-                                        <th>Class</th>
-                                        <th>St. ID</th>
-                                        <th>Email</th>
-                                        <th>Village</th>
-                                        <th>Action</th>
+                                    <table border="1" align="center">
+                                        <tr>
+                                            <thead>
+                                                <th>SI</th>
+                                                <th>Name</th>
+                                                <th>Image</th>
+                                                <th>Class</th>
+                                                <th>St. ID</th>
+                                                <th>Email</th>
+                                                <th>Village</th>
+                                                <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody id="tableBody">
 
                                         </tbody>
-                                </table>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
-                    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-                        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-                            <div class="modal__container" role="dialog" aria-modal="true"
-                                 aria-labelledby="modal-1-title">
-                                <header class="modal__header">
-                                    <h2 class="modal__title" id="modal-1-title"></h2>
-                                    <button class="modal__close" aria-label="Close modal"
-                                            data-micromodal-close onclick="onModalClose()"></button>
-                                </header>
-                                <main class="modal__content" id="modal-1-content">
-                                   <form class="student-add-update-form" id="studentForm">
-                                        <label class="preview" for="student-image">
-                                            <img src="assets/img/author.jpeg" alt="author" id="thumbnail"/>
-                                        </label>
-                                       <input class="picker" type="file" id="student-image" name="image" accept="image"/>
-                                       <div>
-                                           <input type="text" name="firstname" placeholder="First Name" id="firstName"/>
-                                           <input type="text" name="lastname" placeholder="Last Name" id="lastName" value="last name"/>
-                                           <select name="class">
-                                               <option value="">---select a class---</option>
-                                               <option value="10">Class 10</option>
-                                               <option value="9">Class 09</option>
-                                               <option value="8">Class 08</option>
-                                               <option value="7">Class 07</option>
-                                               <option value="6">Class 06</option>
-                                               <option value="5">Class 05</option>
-                                           </select>
-                                           <input type="email" name="email" placeholder="Email"/>
-                                           <input type="text" name="village" placeholder="Village"/>
-                                       </div>
-                                   </form>
-                                </main>
-                                <footer class="modal__footer">
-                                    <button class="modal__btn modal__btn-primary" id="modalSaveButton"></button>
-                                    <button class="modal__btn" data-micromodal-close
+                        <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+                            <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+                                <div class="modal__container" role="dialog" aria-modal="true"
+                                    aria-labelledby="modal-1-title">
+                                    <header class="modal__header">
+                                        <h2 class="modal__title" id="modal-1-title"></h2>
+                                        <button class="modal__close" aria-label="Close modal" data-micromodal-close
+                                            onclick="onModalClose()"></button>
+                                    </header>
+                                    <main class="modal__content" id="modal-1-content">
+                                        <form class="student-add-update-form" id="studentForm">
+                                            <label class="preview" for="student-image">
+                                                <img src="assets/img/author.jpeg" alt="author" id="thumbnail" />
+                                            </label>
+                                            <input class="picker" type="file" id="student-image" name="image"
+                                                accept="image" />
+                                            <div>
+                                                <input type="text" name="firstname" placeholder="First Name"
+                                                    id="firstName" />
+                                                <input type="text" name="lastname" placeholder="Last Name" id="lastName"
+                                                    value="last name" />
+                                                <select name="class">
+                                                    <option value="">---select a class---</option>
+                                                    <option value="10">Class 10</option>
+                                                    <option value="9">Class 09</option>
+                                                    <option value="8">Class 08</option>
+                                                    <option value="7">Class 07</option>
+                                                    <option value="6">Class 06</option>
+                                                    <option value="5">Class 05</option>
+                                                </select>
+                                                <input type="email" name="email" placeholder="Email" />
+                                                <input type="text" name="village" placeholder="Village" />
+                                            </div>
+                                        </form>
+                                    </main>
+                                    <footer class="modal__footer">
+                                        <button class="modal__btn modal__btn-primary" id="modalSaveButton"></button>
+                                        <button class="modal__btn" data-micromodal-close
                                             aria-label="Close this dialog window">Close
-                                    </button>
-                                </footer>
+                                        </button>
+                                    </footer>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="assets/fontawesome/all.js"></script>
-<script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="assets/js/script.js"></script>
-<script src="assets/js/students.js"></script>
+    <script src="assets/fontawesome/all.js"></script>
+    <script src="assets/js/micromodal.min.js"></script>
+    <script src="assets/js/sweetalert2@11.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/students.js"></script>
 
 </body>
+
 </html>

@@ -46,7 +46,7 @@ function uuidv4() {
     );
 }
 
-const user = {
+const currentUser = {
     id: uuidv4(),
     name: "John Doe",
     image: "user.jpeg",
@@ -93,17 +93,22 @@ function doLogin() {
     const formData = new FormData(form);
     const user = Object.fromEntries(formData);
     const savedUserInfo = getUserFromStorage();
-    if (user.username.trim() !== "" && user.password.trim() !== "") {
-        if (savedUserInfo.email !== user.username.trim() || savedUserInfo.password !== user.password.trim()) {
-            error.textContent = "Username or password mismatched!"
+    if(savedUserInfo) {
+        if (user.username.trim() !== "" && user.password.trim() !== "") {
+            if (savedUserInfo.email !== user.username.trim() || savedUserInfo.password !== user.password.trim()) {
+                error.textContent = "Username or password mismatched!"
+            } else {
+                error.textContent = "";
+                savedUserInfo.isLoggedIn = true;
+                saveUserInLocalStorage(savedUserInfo);
+                userLoginStatus();
+            }
         } else {
-            error.textContent = "";
-            savedUserInfo.isLoggedIn = true;
-            saveUserInLocalStorage(savedUserInfo);
-            userLoginStatus();
+            error.textContent = "Input field should not be empty"
         }
-    } else {
-        error.textContent = "Input field should not be empty"
+    }else{
+        saveUserInLocalStorage(currentUser);
+        doLogin()
     }
 }
 

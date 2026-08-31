@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="assets/fontawesome/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-<div class="form">
+    <div class="form">
 
-    <div id="content">
+        <div id="content">
 
-        <div class="dashboards flex" id="student-management">
-            <div class="sidebar flex-column">
-                <div>
-                    <div class="author" id="author-image">
+            <div class="dashboards flex" id="student-management">
+                <div class="sidebar flex-column">
+                    <div>
+                        <div class="author" id="author-image">
 
+                        </div>
+                        <span class="text-center block author-name">MR. RUBEL</span>
                     </div>
-                    <span class="text-center block author-name">MR. RUBEL</span>
+                    <div class="menu"></div>
+                    <div class="footer">
+                        <span>&COPY; Copyright, 2026</span>
+                    </div>
                 </div>
-                <div class="menu"></div>
-                <div class="footer">
-                    <span>&COPY; Copyright, 2026</span>
-                </div>
-            </div>
-            <div class="main-content">
-                <div class="layout">
-                    <div class="header flex between">
-                        <div class="title">
-                            <a href="javascript:void(0)">Dashboard</a>
+                <div class="main-content">
+                    <div class="layout">
+                        <div class="header flex between">
+                            <div class="title">
+                                <a href="javascript:void(0)">Dashboard</a>
+                            </div>
+                            <div class="header-menu">
+                                <a href="#"><i class="fa-solid fa-bell"></i></a>
+                                <a href="#"><i class="fa-solid fa-gear"></i></a>
+                                <a href="javascript:void(0)" onclick="logout()"><i
+                                        class="fa-solid fa-lock"></i>Logout</a>
+                            </div>
                         </div>
-                        <div class="header-menu">
-                            <a href="#"><i class="fa-solid fa-bell"></i></a>
-                            <a href="#"><i class="fa-solid fa-gear"></i></a>
-                            <a href="javascript:void(0)" onclick="logout()"><i class="fa-solid fa-lock"></i>Logout</a>
-                        </div>
+                    </div>
+                    <div class="layout is-margin">
+                        <canvas id="bar"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="assets/fontawesome/all.js"></script>
-<script src="assets/js/script.js"></script>
+    <script src="assets/fontawesome/all.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/chart-related.js"></script>
 </body>
+
 </html>
