@@ -12,13 +12,13 @@ canvas.height = 500
 // ctx.arc(100, 100, 60, 0, Math.PI * 2);
 //
 // ctx.fill()
-// ctx.fill()
+// ctx.fill();
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
 const data = {
     labels: labels,
     datasets: [{
-        label: 'Month wise progress',
+        label: '2024 Data',
         data: [30, 59, 80, 81, 56, 55, 40],
         backgroundColor: [
             'rgba(254, 60, 132, 0.2)',
@@ -39,7 +39,31 @@ const data = {
             'rgb(200, 203, 207)'
         ],
         borderWidth: 2
-    }]
+    },
+        {
+            label: '2025 Data',
+            data: [30, 49, 80, 81, 56, 50, 40],
+            backgroundColor: [
+                'rgba(254, 60, 132, 0.2)',
+                'rgba(254, 159, 64, 0.2)',
+                'rgba(254, 205, 86, 0.2)',
+                'rgba(74, 192, 192, 0.2)',
+                'rgba(53, 162, 235, 0.2)',
+                'rgba(152, 102, 255, 0.2)',
+                'rgba(200, 203, 207, 0.2)'
+            ],
+            borderColor: [
+                'rgb(254, 99, 132)',
+                'rgb(254, 159, 64)',
+                'rgb(254, 205, 86)',
+                'rgb(74, 192, 192)',
+                'rgb(53, 162, 235)',
+                'rgb(152, 102, 255)',
+                'rgb(200, 203, 207)'
+            ],
+            borderWidth: 2
+        }
+    ]
 };
 
 const newLegendClickHandler = function (e, legendItem, legend) {

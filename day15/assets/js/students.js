@@ -67,10 +67,17 @@ let tableBody = document.getElementById("tableBody");
 //     tableBody.appendChild(row)
 // }
 
+const studentModerators = {
+    search: "",
+    dir: "",
+    column: ""
+}
+
 function displayStudents() {
+    const formattedStudents = students.filter(student => (student.firstname + student.lastname).toLowerCase().includes(studentModerators.search));
     tableBody.innerHTML = "";
     if (students.length > 0) {
-        students.forEach(function (student, index) {
+        formattedStudents.forEach(function (student, index) {
             const row = document.createElement("tr");
             row.innerHTML = `
         <td>${index + 1}</td>
@@ -263,7 +270,7 @@ function validateStudent(student) {
     return error;
 }
 
-function classLabels(classValue){
+function classLabels(classValue) {
     const classes = {
         10: "Ten",
         9: "Nine",
@@ -278,5 +285,40 @@ function classLabels(classValue){
 //saveStudents()
 setModalTitleAndButton();
 
+
+// How filter works
+
+const name = "  Roni Islam  "
+// const fullName = "Mosfiqur\tRahman";
+// console.log(fullName)
+// console.log(name.replace("Roni", ""))
+// let text = "Visit W3Schools";
+// let regex = /W3Schools/;
+// let n = text.search(regex);
+// let text = "Black, white, red, green, blue, yellow, blue";
+//
+// let result = text.match(/\s/g);
+// console.log(result);
+// console.log(`"${name.replace(/\s/g, "")}"`)
+// const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+// const email = "Rubel@gmail.com";
+//
+// if (emailRegex.test(email)) {
+//     console.log("Valid email");
+// } else {
+//     console.log("Invalid email");
+// }
+// const filteredStudents = students.filter(
+//     student => (student.firstname + student.lastname)
+//         .toLowerCase()
+//         .includes(name.replace(/\s/g, "").toLowerCase())
+// );
+// console.log(filteredStudents)
+
+function filteredStudents(input) {
+    let searchKeyword = input.value.replace(/\s/g, "").toLowerCase();
+    studentModerators["search"] = searchKeyword;
+    displayStudents();
+}
 
 
