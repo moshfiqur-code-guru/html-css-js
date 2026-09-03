@@ -93,7 +93,7 @@ function doLogin() {
     const formData = new FormData(form);
     const user = Object.fromEntries(formData);
     const savedUserInfo = getUserFromStorage();
-    if(savedUserInfo) {
+    if (savedUserInfo) {
         if (user.username.trim() !== "" && user.password.trim() !== "") {
             if (savedUserInfo.email !== user.username.trim() || savedUserInfo.password !== user.password.trim()) {
                 error.textContent = "Username or password mismatched!"
@@ -106,7 +106,7 @@ function doLogin() {
         } else {
             error.textContent = "Input field should not be empty"
         }
-    }else{
+    } else {
         saveUserInLocalStorage(currentUser);
         doLogin()
     }
@@ -157,7 +157,9 @@ function addMenus() {
         }, {label: "marksheet", icon: "file"}, {label: "guardians", icon: "home-user"}, {
             label: "calculator",
             icon: "calculator"
-        }, {label: "switch", icon: "arrows-rotate"},]
+        }, {label: "switch", icon: "arrows-rotate"},
+        {label: "closure", icon: "arrows-rotate"}
+    ]
     const ul = document.createElement("ul");
     const menu = document.querySelector(".menu")
     for (let i = 0; i < menus.length; i++) {

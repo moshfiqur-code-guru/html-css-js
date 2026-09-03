@@ -584,7 +584,7 @@ td {
 }
 
 .picker {
-    /*display: none;*/
+    display: none;
 }
 
 label.preview {
@@ -610,7 +610,7 @@ form.student-add-update-form input {
 }
 
 form.student-add-update-form input[type="file"] {
-    /*display: none;*/
+    display: none;
 }
 
 form.student-add-update-form select {
@@ -625,4 +625,10 @@ form.student-add-update-form select {
 
 .edit {
     color: #7e7ee5;
+}
+
+.counter-result {
+    width: 100px;
+    margin: auto;
+    text-align: center;
 }

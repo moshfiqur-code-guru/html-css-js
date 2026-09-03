@@ -31,6 +31,13 @@ let currentID = null;
 
 const students = JSON.parse(localStorage.getItem("students")) ?? []
 
+// -> request -> server -> database -> students - 5000 - 30s
+// database -> server -> frontend
+// 20 Next 20 prev
+//
+// server: 0 - 20
+// next - 21 - 20
+
 //->https://demo.restapi.org/get-students
 let tableBody = document.getElementById("tableBody");
 
@@ -148,6 +155,7 @@ modalSaveButton.addEventListener("click", (event) => {
         //manual close of the modal once student saved or
         // student update completed
         MicroModal.close('modal-1')
+        onModalClose()
         Swal.fire({
             title: "Success!",
             //text: "Your data " + message + " successfully",
@@ -317,6 +325,10 @@ const name = "  Roni Islam  "
 
 function filteredStudents(input) {
     let searchKeyword = input.value.replace(/\s/g, "").toLowerCase();
+    fetch("https://api.escuelajs.co/api/v1/products/?title=" + searchKeyword)
+        .then()
+        .then()
+        .catch()
     studentModerators["search"] = searchKeyword;
     displayStudents();
 }
