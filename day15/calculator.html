@@ -8,67 +8,75 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <div class="form">
+<div class="form">
 
-        <div id="content">
+    <div id="content">
 
-            <div class="dashboards flex" id="student-management">
-                <div class="sidebar flex-column">
-                    <div>
-                        <div class="author">
-                            <img src="assets/img/author.jpeg" alt="Author" />
-                        </div>
-                        <span class="text-center block author-name">MR. RUBEL</span>
+        <div class="dashboards flex" id="student-management">
+            <div class="sidebar flex-column">
+                <div>
+                    <div class="author">
+                        <img src="assets/img/author.jpeg" alt="Author"/>
                     </div>
-                    <div class="menu"></div>
-                    <div class="footer">
-                        <span>&COPY; Copyright, 2026</span>
+                    <span class="text-center block author-name">MR. RUBEL</span>
+                </div>
+                <div class="menu"></div>
+                <div class="footer">
+                    <span>&COPY; Copyright, 2026</span>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="header flex between">
+                    <div class="title">
+                        <a href="javascript:void(0)">Calculator</a>
+                    </div>
+                    <div class="header-menu">
+                        <a href="#"><i class="fa-solid fa-bell"></i></a>
+                        <a href="#"><i class="fa-solid fa-gear"></i></a>
+                        <a href="javascript:void(0)" onclick="logout()"><i class="fa-solid fa-lock"></i>Logout</a>
                     </div>
                 </div>
-                <div class="main-content">
-                    <div class="header flex between">
-                        <div class="title">
-                            <a href="javascript:void(0)">Calculator</a>
-                        </div>
-                        <div class="header-menu">
-                            <a href="#"><i class="fa-solid fa-bell"></i></a>
-                            <a href="#"><i class="fa-solid fa-gear"></i></a>
-                            <a href="javascript:void(0)" onclick="logout()"><i class="fa-solid fa-lock"></i>Logout</a>
-                        </div>
+
+                <div class="content">
+                    <div class="calculation">
+                        <p id="result">Result: </p>
+                        <p>First Number: <input type="number" id="firstNumber"/> &nbsp; &nbsp; Second Number:
+                            <input type="number" id="lastNumber"/>
+                            <button onclick="addition()">Add</button>
+                        </p>
                     </div>
 
-                    <div class="content">
-                        <div class="calculation">
-                            <p id="result">Result: </p>
-                            <p>First Number: <input type="number" id="firstNumber" /> &nbsp; &nbsp; Second Number:
-                                <input type="number" id="lastNumber" />
-                                <button onclick="addition()">Add</button>
-                            </p>
+                    <div class="mini-calculator">
+                        <h1>Simple Calculator</h1>
+                        <div class="results">
+                            <input id="res" readonly/><br/>
                         </div>
-
-                        <div class="mini-calculator">
-                            <h1>Simple Calculator</h1>
-                            <div class="results">
-                                <input id="res" readonly /><br />
-                            </div>
-                            <div class="inputs flex"><input id="fnumber" />&nbsp;<input id="snumber" /></div>
-                            <div id="buttons"></div>
+                        <div class="inputs flex"><input id="fnumber"/>&nbsp;<input id="snumber"/></div>
+                        <div id="buttons"></div>
+                    </div>
+                    <div class="layout is-margin flex  flex-center">
+                        <div class="calculate-counter flex items-center between">
+                            <button>Increment +</button>
+                            <input id="count-res" value="0" class="text-center"/>
+                            <button>Decrement -</button>
                         </div>
-
                     </div>
 
                 </div>
+
             </div>
         </div>
     </div>
-    <script src="assets/fontawesome/all.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/calculator.js"></script>
+</div>
+<script src="assets/fontawesome/all.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/closure-factory.js"></script>
+<script src="assets/js/calculator.js"></script>
 </body>
 
 </html>

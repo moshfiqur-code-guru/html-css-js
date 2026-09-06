@@ -42,40 +42,27 @@ function hello() {
 // count = 100;
 // console.log(count)
 
-const countElement = document.getElementById("count")
-
-function counter() {
-    let count = 0;
-
-    function increment(inc) {
-        count += inc;
-        //countElement.innerText = count.toString()
-    }
-
-    function decrement(dec) {
-        count -= dec;
-        //countElement.innerText = count.toString()
-    }
-
-    function getCount() {
-        return count;
-    }
-
-    return {
-        increment,
-        decrement,
-        getCount
-    }
-}
 
 const counters = counter();
-console.log(counters.getCount())
+const countElement = document.getElementById("count")
 
 const btns = document.querySelectorAll(".counter button");
 btns.forEach((btn, index) => {
-    let fn = index === 0 ? () => counters.increment(5) : () => counters.decrement(2)
+    let fn = index === 0 ? () => {
+        counters.increment(5);
+        displayResult()
+    } : () => {
+        counters.decrement(2);
+        displayResult()
+    }
+
     btn.addEventListener("click", fn)
 })
+
+function displayResult() {
+    const count = counters.getCount()
+    countElement.innerText = count.toString()
+}
 
 
 

@@ -10,6 +10,17 @@ const studentImagePicker = document.getElementById("student-image");
 const preview = document.getElementById("thumbnail");
 let editableIndex = null;
 let currentID = null;
+let tableBody = document.getElementById("tableBody");
+const columns = [
+    {label: "SI", header: "", isSortable: false},
+    {label: "Name", header: "fullname", isSortable: true},
+    {label: "Image", header: "image", isSortable: false},
+    {label: "Class", header: "class", isSortable: true},
+    {label: "St. ID", header: "id", isSortable: true},
+    {label: "Email", header: "email", isSortable: true},
+    {label: "Village", header: "village", isSortable: true},
+    {label: "Action", header: "", isSortable: false},
+]
 // const students = [{
 //     id: new Date().getMilliseconds(),
 //     firstname: "Tomas",
@@ -31,53 +42,38 @@ let currentID = null;
 
 const students = JSON.parse(localStorage.getItem("students")) ?? []
 
-// -> request -> server -> database -> students - 5000 - 30s
-// database -> server -> frontend
-// 20 Next 20 prev
-//
-// server: 0 - 20
-// next - 21 - 20
-
-//->https://demo.restapi.org/get-students
-let tableBody = document.getElementById("tableBody");
-
-// const arr = [20, 30, 50];
-// //
-// const print = () => {
-//
-// }
-//
-// function doAnything() {
-//
-// }
-//
-// arr.forEach((item, index) => {
-//     console.log(item, "  === ", index)
-// })
-
-// for (let i = 0; i < students.length; i++){
-//     const row = document.createElement("tr");
-//     const student = students[i];
-//     row.innerHTML = `
-//         <td>${i + 1}</td>
-//         <td>${students.firstname} ${student.lastname}</td>
-//         <td><img src="assets/img/author.jpeg"/></td>
-//         <td>${student.class}</td>
-//         <td>${student.id}</td>
-//         <td>${student.email}</td>
-//         <td>${student.village}</td>
-//         <td>
-//             <button class="delete" onclick="deleteStudent(${index})"><i class="fa fa-solid fa-trash"></i></button>
-//             <button class="edit"  onclick="editStudent(${index})"><i class="fa fa-solid fa-pencil"></i></button>
-//         </td>
-//         `;
-//     tableBody.appendChild(row)
-// }
 
 const studentModerators = {
     search: "",
     dir: "",
     column: ""
+}
+
+
+// <th>SI</th>
+// <th>Name</th>
+// <th>Image</th>
+// <th>Class</th>
+// <th>St. ID</th>
+// <th>Email</th>
+// <th>Village</th>
+// <th>Action</th>
+
+function displayColumn() {
+    const thead = document.getElementById("columns");
+    const tr = document.createElement("tr")
+    columns.forEach(column => {
+        let th = `<th>
+            <div class="flex items-center flex-center">
+            <span>${column.label}</span>
+            ${column.isSortable ? `<div class="sort-button">
+            <span><i class="fa fa-caret-up"></i></span>
+            <span><i class="fa fa-caret-down"></i></span>
+        </div>` : ""}</div></th>
+        `
+        tr.innerHTML += th;
+    });
+    thead.appendChild(tr)
 }
 
 function displayStudents() {
@@ -109,6 +105,7 @@ function displayStudents() {
 }
 
 displayStudents();
+displayColumn()
 
 function saveStudents() {
     localStorage.setItem("students", JSON.stringify(students))
@@ -205,21 +202,9 @@ function editStudent(index, id) {
     editableIndex = index;
     currentID = id;
     setModalTitleAndButton();
-    // const student = students.find((student) => {
-    //     return student.id === id
-    // });
-    // const student = students.find(student => student.id === id);
     MicroModal.show('modal-1')
     const student = students[index];
-    // studentForm.elements["firstname"].value = student["firstname"]
-    // studentForm.elements["lastname"].value = student["lastname"]
-    // studentForm.elements["class"].value = student["class"];
     const keys = Object.keys(student);
-    // for (let i = 0; i < keys.length; i++) {
-    //     if (keys[i] !== "image" && keys[i] !== "id") {
-    //         studentForm.elements[keys[i]].value = student[keys[i]]
-    //     }
-    // }
     keys.forEach((key, index) => {
         if (key !== "image" && key !== "id") {
             studentForm.elements[key].value = student[key]
@@ -290,47 +275,20 @@ function classLabels(classValue) {
     return `Class ${classes[classValue]}`;
 }
 
-//saveStudents()
 setModalTitleAndButton();
 
-
-// How filter works
-
 const name = "  Roni Islam  "
-// const fullName = "Mosfiqur\tRahman";
-// console.log(fullName)
-// console.log(name.replace("Roni", ""))
-// let text = "Visit W3Schools";
-// let regex = /W3Schools/;
-// let n = text.search(regex);
-// let text = "Black, white, red, green, blue, yellow, blue";
-//
-// let result = text.match(/\s/g);
-// console.log(result);
-// console.log(`"${name.replace(/\s/g, "")}"`)
-// const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-// const email = "Rubel@gmail.com";
-//
-// if (emailRegex.test(email)) {
-//     console.log("Valid email");
-// } else {
-//     console.log("Invalid email");
-// }
-// const filteredStudents = students.filter(
-//     student => (student.firstname + student.lastname)
-//         .toLowerCase()
-//         .includes(name.replace(/\s/g, "").toLowerCase())
-// );
-// console.log(filteredStudents)
 
-function filteredStudents(input) {
-    let searchKeyword = input.value.replace(/\s/g, "").toLowerCase();
-    fetch("https://api.escuelajs.co/api/v1/products/?title=" + searchKeyword)
-        .then()
-        .then()
-        .catch()
-    studentModerators["search"] = searchKeyword;
+function filteredStudents(searchValue) {
+    studentModerators["search"] = searchValue;
     displayStudents();
 }
 
+const searchDebounce = debounce(filteredStudents);
+
+
+function studentFilterWithDebounce(input) {
+    let searchKeyword = input.value.replace(/\s/g, "").toLowerCase();
+    searchDebounce(searchKeyword)
+}
 

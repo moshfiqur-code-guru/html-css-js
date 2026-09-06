@@ -91,3 +91,23 @@ function doCalculation(operator) {
     resultDiv.value = result
 }
 
+const counters = counter();
+const input = document.getElementById("count-res")
+const btns = document.querySelectorAll(".calculate-counter button");
+btns.forEach((btn, index) => {
+    let fn = index === 0 ? () => {
+        counters.increment(5);
+        insertResultIntoInput()
+    } : () => {
+        counters.decrement(2);
+        insertResultIntoInput()
+    }
+
+    btn.addEventListener("mouseover", fn)
+});
+
+function insertResultIntoInput() {
+    const count = counters.getCount();
+    input.value = count
+}
+

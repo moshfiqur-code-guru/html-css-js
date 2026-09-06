@@ -632,3 +632,21 @@ form.student-add-update-form select {
     margin: auto;
     text-align: center;
 }
+
+.sort-button {
+    position: relative;
+    top: -7px;
+    cursor: pointer;
+}
+
+.sort-button span {
+    position: absolute;
+}
+
+.sort-button span:first-child {
+    transform: translateY(-3px);
+}
+
+.sort-button span:last-child {
+    transform: translateY(3px);
+}
