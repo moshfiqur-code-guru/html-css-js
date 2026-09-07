@@ -46,38 +46,80 @@ const students = JSON.parse(localStorage.getItem("students")) ?? []
 const studentModerators = {
     search: "",
     dir: "",
-    column: ""
+    col: ""
 }
 
+function decideSortIcons(column) {
+    const {isSortable} = column;
+    const {col, dir} = studentModerators;
+    const active = column.header === col;
 
-// <th>SI</th>
-// <th>Name</th>
-// <th>Image</th>
-// <th>Class</th>
-// <th>St. ID</th>
-// <th>Email</th>
-// <th>Village</th>
-// <th>Action</th>
+    if (!isSortable) return "";
+
+    const icon = dir === "ASC" ? "up" : "down";
+
+    const singularIcon = `<span class="no-indent"><i class="fa fa-caret-${icon}"></i></span>`
+
+    const icons = (!active || !dir)
+        ? `<span><i class="fa fa-caret-up"></i></span>
+            <span><i class="fa fa-caret-down"></i></span>`
+        : dir === "ASC"
+            ? `${singularIcon}`
+            : `${singularIcon}`;
+
+    let nextDir = "";
+    if (col !== "" && active) {
+        if (dir === "ASC") {
+            nextDir = "DESC"
+        } else {
+            nextDir = "ASC"
+        }
+    } else {
+        nextDir = "ASC"
+    }
+
+    return {
+        nextDir,
+        html: `<div class="sort-button">${icons}</div>`
+    }
+}
 
 function displayColumn() {
     const thead = document.getElementById("columns");
+    thead.innerHTML = ""
     const tr = document.createElement("tr")
     columns.forEach(column => {
-        let th = `<th>
-            <div class="flex items-center flex-center">
-            <span>${column.label}</span>
-            ${column.isSortable ? `<div class="sort-button">
-            <span><i class="fa fa-caret-up"></i></span>
-            <span><i class="fa fa-caret-down"></i></span>
-        </div>` : ""}</div></th>
-        `
-        tr.innerHTML += th;
+        const {html, nextDir} = decideSortIcons(column)
+        let th = document.createElement("th")
+        th.innerHTML = `<div class="flex items-center flex-center">
+                    <span>${column.label}</span>
+                    ${html ?? ""}
+                </div>`
+        tr.appendChild(th);
+        th.addEventListener("click", () => studentSorting(column.header, decideSortIcons(column).nextDir))
     });
     thead.appendChild(tr)
 }
 
+function studentSorting(column, nextDir) {
+    studentModerators["dir"] = nextDir;
+    studentModerators["col"] = column;
+    displayColumn()
+    displayStudents()
+}
+
 function displayStudents() {
-    const formattedStudents = students.filter(student => (student.firstname + student.lastname).toLowerCase().includes(studentModerators.search));
+    const {col, dir, search} = studentModerators;
+    const formattedStudents = students
+        .filter(student => (student.firstname + student.lastname)
+            .toLowerCase()
+            .includes(search))
+        .sort((a, b) => {
+            const valueA = col === 'fullname' ? a["firstname"] + a["lastname"] : a[col];
+            const valueB = col === 'fullname' ? b["firstname"] + b["lastname"] : b[col];
+            if (col === "") return 0;
+            return dir === "ASC" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA)
+        })
     tableBody.innerHTML = "";
     if (students.length > 0) {
         formattedStudents.forEach(function (student, index) {
@@ -284,11 +326,11 @@ function filteredStudents(searchValue) {
     displayStudents();
 }
 
-const searchDebounce = debounce(filteredStudents);
+const searchDebounce = debounce();
 
 
 function studentFilterWithDebounce(input) {
     let searchKeyword = input.value.replace(/\s/g, "").toLowerCase();
-    searchDebounce(searchKeyword)
+    searchDebounce(searchKeyword, filteredStudents, 100)
 }
 
