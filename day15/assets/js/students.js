@@ -96,7 +96,7 @@ function displayColumn() {
                     ${html ?? ""}
                 </div>`
         tr.appendChild(th);
-        th.addEventListener("click", () => studentSorting(column.header, decideSortIcons(column).nextDir))
+        th.addEventListener("click", () => studentSorting(column.header, nextDir))
     });
     thead.appendChild(tr)
 }
@@ -118,6 +118,8 @@ function displayStudents() {
             const valueA = col === 'fullname' ? a["firstname"] + a["lastname"] : a[col];
             const valueB = col === 'fullname' ? b["firstname"] + b["lastname"] : b[col];
             if (col === "") return 0;
+            if (col === "class") return dir === "ASC" ? Number(valueA) - Number(valueB) : Number(valueB) - Number(valueA)
+            if (typeof valueA === "number") return dir === "ASC" ? valueA - valueB : valueB - valueA
             return dir === "ASC" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA)
         })
     tableBody.innerHTML = "";

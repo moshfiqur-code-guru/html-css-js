@@ -187,3 +187,42 @@ function activeMenu() {
 
 activeMenu();
 
+
+//=======================
+// JAVASCRIPT MATH
+//=======================
+//console.log(Math)
+// const amount = Math.PI;
+// console.log(amount)
+//Math.round
+// console.log(Math.round(4.5))
+// console.log(Math.round(4.4))
+// console.log(Math.round(4.7))
+//
+// console.log(Math.floor(4.9))
+// console.log(Math.floor(4.99))
+//
+// console.log(Math.ceil(4.1))
+//
+//
+// console.log(Math.trunc(-4.9))
+// console.log(Math.floor(-4.4))
+//
+// console.log(Math.abs(10))
+// console.log(Math.abs(-10))
+
+// Nayagola - new Market
+// Math.abs(n - new)
+
+// console.log(Math.max(10, 20, 3, 30, 100, 20))
+// console.log(Math.min(10, 20, 3, 30, 100, 20))
+//
+// console.log(Math.pow(10, 2))
+// console.log(Math.pow(10, 3))
+// console.log(Math.sqrt(100))
+// console.log(Math.sqrt(25))
+//
+// console.log(Math.cbrt(8))
+// const t = 0.4 * 10
+console.log(Math.floor(Math.random() * 10))
+
