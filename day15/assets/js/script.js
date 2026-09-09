@@ -224,5 +224,5 @@ activeMenu();
 //
 // console.log(Math.cbrt(8))
 // const t = 0.4 * 10
-console.log(Math.floor(Math.random() * 10))
+// console.log(Math.floor(Math.random() * 10))
 

@@ -40,14 +40,49 @@ const columns = [
 // ];
 //console.log(studentss)
 
-const students = JSON.parse(localStorage.getItem("students")) ?? []
+
+function addDemoStudents() {
+    for (let i = 0; i < 100; i++) {
+        students.push({
+            id: new Date().getMilliseconds(),
+            firstname: "Tomas - " + i,
+            lastname: "Adison - " + i,
+            email: "tomas-" + i + "@gmail.com",
+            class: Math.floor(Math.random() * 4) + 6,
+            village: "Nayagola-" + i
+        })
+    }
+    localStorage.setItem("students", JSON.stringify(students))
+}
+
+
+let students = JSON.parse(localStorage.getItem("students")) ?? []
+let temp = JSON.parse(localStorage.getItem("students")) ?? []
+
+const config = {
+    currentPage: 1,
+    itemsPerPage: 10,
+    maxVisiblePages: 5,
+    container: document.getElementById("pagination"),
+    data: students
+}
+const pagination = createPagination(config);
+
+function paginate() {
+    studentModerators["startIndex"] = pagination.getStartIndex()
+    studentModerators["endIndex"] = pagination.getEndIndex();
+}
 
 
 const studentModerators = {
     search: "",
     dir: "",
-    col: ""
+    col: "",
+    startIndex: null,
+    endIndex: null
 }
+
+//addDemoStudents()
 
 function decideSortIcons(column) {
     const {isSortable} = column;
@@ -109,7 +144,8 @@ function studentSorting(column, nextDir) {
 }
 
 function displayStudents() {
-    const {col, dir, search} = studentModerators;
+    displayColumn()
+    const {col, dir, search, startIndex, endIndex} = studentModerators;
     const formattedStudents = students
         .filter(student => (student.firstname + student.lastname)
             .toLowerCase()
@@ -121,7 +157,8 @@ function displayStudents() {
             if (col === "class") return dir === "ASC" ? Number(valueA) - Number(valueB) : Number(valueB) - Number(valueA)
             if (typeof valueA === "number") return dir === "ASC" ? valueA - valueB : valueB - valueA
             return dir === "ASC" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA)
-        })
+        }).slice(startIndex, endIndex);
+    students = formattedStudents
     tableBody.innerHTML = "";
     if (students.length > 0) {
         formattedStudents.forEach(function (student, index) {
@@ -148,8 +185,9 @@ function displayStudents() {
     }
 }
 
+paginate()
 displayStudents();
-displayColumn()
+
 
 function saveStudents() {
     localStorage.setItem("students", JSON.stringify(students))
@@ -325,6 +363,7 @@ const name = "  Roni Islam  "
 
 function filteredStudents(searchValue) {
     studentModerators["search"] = searchValue;
+    if (searchValue === "") students = temp
     displayStudents();
 }
 
@@ -336,3 +375,17 @@ function studentFilterWithDebounce(input) {
     searchDebounce(searchKeyword, filteredStudents, 100)
 }
 
+
+function next() {
+    students = temp
+    pagination.nextPage();
+    paginate();
+    displayStudents()
+}
+
+function prev() {
+    students = temp
+    pagination.previousPage();
+    paginate();
+    displayStudents()
+}
