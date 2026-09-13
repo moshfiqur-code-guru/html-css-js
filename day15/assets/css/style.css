@@ -654,3 +654,36 @@ form.student-add-update-form select {
 .sort-button span.no-indent {
     transform: translateY(0px);
 }
+
+
+/* ===============
+PAGINATION UI
+==============
+
+*/
+button.page-btn.active {
+    background: #b7b332;
+    color: white;
+}
+
+#pagination {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    align-items: center;
+}
+
+.pagination-pages {
+    display: flex;
+    gap: 5px;
+    margin: 0 5px;
+}
+
+button.page-btn {
+    border: 1px solid #ddd;
+    width: 40px;
+    text-align: center;
+    font-size: 19px;
+    color: #666;
+    border-radius: 4px;
+}

@@ -59,20 +59,35 @@ function addDemoStudents() {
 let students = JSON.parse(localStorage.getItem("students")) ?? []
 let temp = JSON.parse(localStorage.getItem("students")) ?? []
 
+
+function nextPaginationButton() {
+    const button = document.createElement("button");
+    button.innerHTML = "<i class='fa fa-angle-double-right'></i>";
+    button.className = "pagination-btn";
+    return button;
+}
+
+function prevPaginationButton() {
+    const button = document.createElement("button");
+    button.innerHTML = "<i class='fa fa-angle-double-left'></i>";
+    button.className = "pagination-btn";
+    return button;
+}
+
 const config = {
     currentPage: 1,
     itemsPerPage: 10,
     maxVisiblePages: 5,
     container: document.getElementById("pagination"),
-    data: students
+    data: students,
+    callToAction: displayStudents,
+    nextBtn: nextPaginationButton(),
+    prevBtn: prevPaginationButton(),
+
 }
+
 const pagination = createPagination(config);
-
-function paginate() {
-    studentModerators["startIndex"] = pagination.getStartIndex()
-    studentModerators["endIndex"] = pagination.getEndIndex();
-}
-
+pagination.render()
 
 const studentModerators = {
     search: "",
@@ -146,7 +161,8 @@ function studentSorting(column, nextDir) {
 function displayStudents() {
     displayColumn()
     const {col, dir, search, startIndex, endIndex} = studentModerators;
-    const formattedStudents = students
+    let paginatedData = pagination.paginate(temp)
+    const formattedStudents = paginatedData
         .filter(student => (student.firstname + student.lastname)
             .toLowerCase()
             .includes(search))
@@ -157,11 +173,11 @@ function displayStudents() {
             if (col === "class") return dir === "ASC" ? Number(valueA) - Number(valueB) : Number(valueB) - Number(valueA)
             if (typeof valueA === "number") return dir === "ASC" ? valueA - valueB : valueB - valueA
             return dir === "ASC" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA)
-        }).slice(startIndex, endIndex);
+        });
     students = formattedStudents
     tableBody.innerHTML = "";
     if (students.length > 0) {
-        formattedStudents.forEach(function (student, index) {
+        students.forEach(function (student, index) {
             const row = document.createElement("tr");
             row.innerHTML = `
         <td>${index + 1}</td>
@@ -185,7 +201,7 @@ function displayStudents() {
     }
 }
 
-paginate()
+
 displayStudents();
 
 
