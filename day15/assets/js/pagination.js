@@ -15,7 +15,8 @@ function createPagination(config) {
         data,
         callToAction,
         nextBtn,
-        prevBtn
+        prevBtn,
+        showNavigationImage = false
     } = config;
 
     function getTotalPages() {
@@ -92,12 +93,50 @@ function createPagination(config) {
         if (totalPages === 0) {
             return pages;
         }
-        if (totalPages <= 11) {
+        if (totalPages <= maxVisiblePages) {
             for (let page = 1; page <= totalPages; page++) {
                 pages.push(page)
             }
             return pages;
         }
+        // First page
+        pages.push(1);
+
+        const middleCount = maxVisiblePages - 2;
+
+        let start = currentPage - Math.floor(middleCount / 2);
+        let end = start + middleCount - 1;
+
+        // Fix beginning
+        if (start < 2) {
+            start = 2;
+            end = start + middleCount - 1;
+        }
+
+        // Fix ending
+        if (end > totalPages - 1) {
+            end = totalPages - 1;
+            start = end - middleCount + 1;
+        }
+
+        // Left dots
+        if (start > 2) {
+            pages.push("...");
+        }
+
+        // Middle pages
+        for (let page = start; page <= end; page++) {
+            pages.push(page);
+        }
+
+        // Right dots
+        if (end < totalPages - 1) {
+            pages.push("...");
+        }
+
+        // Last page
+        pages.push(totalPages);
+
         return pages;
     }
 
@@ -118,11 +157,21 @@ function createPagination(config) {
         if (totalPages <= 1) {
             return;
         }
-
-        //pagination prev and next button
         const prevButton = prevBtn ? prevBtn : createButton("prev", "pagination-btn", previousPage);
         const nextButton = nextBtn ? nextBtn : createButton("next", "pagination-btn", nextPage);
         if (prevBtn && nextBtn) {
+            if (showNavigationImage) {
+                const imgPrev = document.createElement("img");
+                imgPrev.className = "img-prev"
+                prevButton.querySelector(".img-prev")?.remove()
+                imgPrev.src = "assets/img/" + data[getStartIndex()].image
+                const imgNext = document.createElement("img");
+                imgNext.className = "img-next"
+                nextButton.querySelector(".img-next")?.remove()
+                imgNext.src = "assets/img/" + data[getEndIndex()].image
+                prevButton.append(imgPrev)
+                nextButton.prepend(imgNext)
+            }
             prevButton.addEventListener("click", previousPage)
             nextButton.addEventListener("click", nextPage)
         }
@@ -135,9 +184,11 @@ function createPagination(config) {
         const pages = getPageNumbers();
 
         pages.forEach(page => {
-            const pageButton = createButton(page, "page-btn", () => goToPage(page));
+            const pageButton = createButton(page, page === "..." ? "page-dot-btn" : "page-btn", () => goToPage(page));
             if (page === currentPage) {
-                pageButton.classList.add("active")
+                requestAnimationFrame(() => {
+                    pageButton.classList.add("active");
+                });
             }
             pageContainer.appendChild(pageButton)
         })
@@ -148,4 +199,5 @@ function createPagination(config) {
 
     return {getStartIndex, getCurrentPage, getTotalPages, getEndIndex, nextPage, previousPage, render, paginate}
 }
+
 

@@ -49,7 +49,8 @@ function addDemoStudents() {
             lastname: "Adison - " + i,
             email: "tomas-" + i + "@gmail.com",
             class: Math.floor(Math.random() * 4) + 6,
-            village: "Nayagola-" + i
+            village: "Nayagola-" + i,
+            image: Math.floor(Math.random() * 10) + 1 + ".png"
         })
     }
     localStorage.setItem("students", JSON.stringify(students))
@@ -58,21 +59,6 @@ function addDemoStudents() {
 
 let students = JSON.parse(localStorage.getItem("students")) ?? []
 let temp = JSON.parse(localStorage.getItem("students")) ?? []
-
-
-function nextPaginationButton() {
-    const button = document.createElement("button");
-    button.innerHTML = "<i class='fa fa-angle-double-right'></i>";
-    button.className = "pagination-btn";
-    return button;
-}
-
-function prevPaginationButton() {
-    const button = document.createElement("button");
-    button.innerHTML = "<i class='fa fa-angle-double-left'></i>";
-    button.className = "pagination-btn";
-    return button;
-}
 
 const config = {
     currentPage: 1,
@@ -83,11 +69,32 @@ const config = {
     callToAction: displayStudents,
     nextBtn: nextPaginationButton(),
     prevBtn: prevPaginationButton(),
+    showNavigationImage: true
 
 }
 
 const pagination = createPagination(config);
 pagination.render()
+
+
+function nextPaginationButton() {
+    // const start = pagination.getStartIndex();
+    // const endIndex = pagination.getEndIndex();
+    // const firstData = students[start]
+    const button = document.createElement("button");
+    button.innerHTML = `<i class='fa fa-angle-right'></i>`;
+    button.className = "pagination-btn";
+    return button;
+}
+
+
+function prevPaginationButton() {
+    const button = document.createElement("button");
+    button.innerHTML = `<i class='fa fa-angle-left'></i>`;
+    button.className = "pagination-btn";
+    return button;
+}
+
 
 const studentModerators = {
     search: "",
