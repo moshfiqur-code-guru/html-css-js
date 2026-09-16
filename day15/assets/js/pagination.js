@@ -18,6 +18,7 @@ function createPagination(config) {
         prevBtn,
         showNavigationImage = false
     } = config;
+    let prev = currentPage
 
     function getTotalPages() {
         return Math.ceil(data.length / itemsPerPage) // 1000/10 = 100 + 1 = 101
@@ -30,6 +31,7 @@ function createPagination(config) {
     function getStartIndex() {
         return (currentPage - 1) * itemsPerPage
     }
+
 
     function getEndIndex() {
         return Math.min(getStartIndex() + itemsPerPage, data.length)
@@ -150,6 +152,7 @@ function createPagination(config) {
     }
 
     function render() {
+
         container.innerHTML = "";
 
         const totalPages = getTotalPages();
@@ -164,11 +167,11 @@ function createPagination(config) {
                 const imgPrev = document.createElement("img");
                 imgPrev.className = "img-prev"
                 prevButton.querySelector(".img-prev")?.remove()
-                imgPrev.src = "assets/img/" + data[getStartIndex()].image
+                imgPrev.src = "assets/img/" + data[getEndIndex() === data.length ? data.length - 1 : getEndIndex()].image
                 const imgNext = document.createElement("img");
                 imgNext.className = "img-next"
                 nextButton.querySelector(".img-next")?.remove()
-                imgNext.src = "assets/img/" + data[getEndIndex()].image
+                imgNext.src = "assets/img/" + data[getEndIndex() === data.length ? data.length - 1 : getEndIndex()].image
                 prevButton.append(imgPrev)
                 nextButton.prepend(imgNext)
             }
@@ -184,20 +187,35 @@ function createPagination(config) {
         const pages = getPageNumbers();
 
         pages.forEach(page => {
+            const oldPrev = prev;
             const pageButton = createButton(page, page === "..." ? "page-dot-btn" : "page-btn", () => goToPage(page));
             if (page === currentPage) {
+                const cls = oldPrev < currentPage ? "go-next" : "go-left"
+                pageButton.classList.add(cls)
                 requestAnimationFrame(() => {
-                    pageButton.classList.add("active");
+                    pageButton.classList.add(`active`);
                 });
+
             }
             pageContainer.appendChild(pageButton)
         })
 
         container.append(prevButton, pageContainer, nextButton)
+        prev = currentPage
 
     }
 
-    return {getStartIndex, getCurrentPage, getTotalPages, getEndIndex, nextPage, previousPage, render, paginate}
+    return {
+        getStartIndex,
+        getCurrentPage,
+        getTotalPages,
+        getEndIndex,
+        nextPage,
+        previousPage,
+        render,
+        paginate,
+        goToPage
+    }
 }
 
 

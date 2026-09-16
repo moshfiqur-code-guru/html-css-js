@@ -44,13 +44,13 @@ const columns = [
 function addDemoStudents() {
     for (let i = 0; i < 100; i++) {
         students.push({
-            id: new Date().getMilliseconds(),
+            id: new Date().getMilliseconds() + i,
             firstname: "Tomas - " + i,
             lastname: "Adison - " + i,
             email: "tomas-" + i + "@gmail.com",
             class: Math.floor(Math.random() * 4) + 6,
             village: "Nayagola-" + i,
-            image: Math.floor(Math.random() * 10) + 1 + ".png"
+            image: Math.floor(Math.random() * 9) + 1 + ".png"
         })
     }
     localStorage.setItem("students", JSON.stringify(students))
@@ -65,7 +65,7 @@ const config = {
     itemsPerPage: 10,
     maxVisiblePages: 5,
     container: document.getElementById("pagination"),
-    data: students,
+    data: temp,
     callToAction: displayStudents,
     nextBtn: nextPaginationButton(),
     prevBtn: prevPaginationButton(),
@@ -167,9 +167,8 @@ function studentSorting(column, nextDir) {
 
 function displayStudents() {
     displayColumn()
-    const {col, dir, search, startIndex, endIndex} = studentModerators;
-    let paginatedData = pagination.paginate(temp)
-    const formattedStudents = paginatedData
+    const {col, dir, search} = studentModerators;
+    const formattedStudents = temp
         .filter(student => (student.firstname + student.lastname)
             .toLowerCase()
             .includes(search))
@@ -181,7 +180,7 @@ function displayStudents() {
             if (typeof valueA === "number") return dir === "ASC" ? valueA - valueB : valueB - valueA
             return dir === "ASC" ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA)
         });
-    students = formattedStudents
+    students = pagination.paginate(formattedStudents)
     tableBody.innerHTML = "";
     if (students.length > 0) {
         students.forEach(function (student, index) {
@@ -212,8 +211,9 @@ function displayStudents() {
 displayStudents();
 
 
-function saveStudents() {
-    localStorage.setItem("students", JSON.stringify(students))
+function saveStudents(updateStudents) {
+    localStorage.setItem("students", JSON.stringify(updateStudents));
+    students = updateStudents
 }
 
 
@@ -239,16 +239,26 @@ modalSaveButton.addEventListener("click", (event) => {
         //Only for updating student and
         // need that editable index present
         if (editableIndex !== null) {
-            students[editableIndex] = student;
+            let updatedTemp = temp.map(prevStudent => {
+                if (prevStudent.id === currentID) {
+                    return student;
+                }
+                return prevStudent
+            });
+            temp = updatedTemp
+            saveStudents(updatedTemp);
+            //students[editableIndex] = student;
             currentID = null;
             editableIndex = null;
             message = "updated";
         } else {
             message = "saved";
-            students.push(student)
+            temp.push(student)
+            saveStudents(temp);
+            pagination.render()
         }
         //save updated students in the storage
-        saveStudents();
+
         //display again the updated students in the table
         displayStudents();
         //after saving or updating student resetting the form
@@ -285,9 +295,14 @@ function deleteStudent(index, id) {
     }).then((confirmation) => {
         if (confirmation.isConfirmed) {
             //deleting student using index
-            students.splice(index, 1);
+            temp.splice(index, 1);
+
+            if (students.length === 1) {
+                pagination.goToPage(pagination.getCurrentPage() - 1)
+            }
             //save again with updated students
-            saveStudents();
+            saveStudents(temp);
+            pagination.render()
             //re-render student table
             displayStudents();
             Swal.fire({
@@ -399,16 +414,3 @@ function studentFilterWithDebounce(input) {
 }
 
 
-function next() {
-    students = temp
-    pagination.nextPage();
-    paginate();
-    displayStudents()
-}
-
-function prev() {
-    students = temp
-    pagination.previousPage();
-    paginate();
-    displayStudents()
-}
