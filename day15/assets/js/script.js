@@ -226,3 +226,20 @@ activeMenu();
 // const t = 0.4 * 10
 // console.log(Math.floor(Math.random() * 10))
 
+const hmaberguerBtn = document.querySelector(".toggle-menu");
+const overlay = document.querySelector(".overlay");
+let isOpen = false;
+hmaberguerBtn.addEventListener("click", () => {
+    if (!isOpen) {
+        document.body.classList.add("open");
+        isOpen = true;
+    } else {
+        document.body.classList.remove("open")
+    }
+});
+overlay.addEventListener("click", function () {
+    if (isOpen) {
+        document.body.classList.remove("open");
+        isOpen = false;
+    }
+})

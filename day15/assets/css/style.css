@@ -230,13 +230,30 @@ input:focus-visible {
     width: 300px;
     padding: 20px 0;
     box-sizing: border-box;
-    background: #999;
+    background: #444;
     justify-content: space-between;
     align-items: center;
     position: fixed;
     left: 0;
     bottom: 0;
     top: 0;
+    transition: 400ms ease;
+    z-index: 999;
+}
+
+body.open .sidebar {
+    left: 0;
+}
+
+
+body.open .overlay {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .3);
 }
 
 .author {
@@ -262,7 +279,7 @@ input:focus-visible {
 .sidebar ul li a {
     display: block;
     padding: 10px 0;
-    color: #333;
+    color: #999;
     font-size: 20px;
     transition: 400ms;
     text-transform: capitalize;
@@ -275,7 +292,7 @@ input:focus-visible {
 }
 
 .sidebar ul li a:hover {
-    color: #000;
+    color: #fff;
 }
 
 /* ==============================MAIN CONTENT============================= */
@@ -287,6 +304,7 @@ input:focus-visible {
     width: calc(100% - 300px);
     padding: 20px;
     margin-left: 300px;
+    transition: 400ms ease;
 }
 
 .relative {
@@ -313,7 +331,7 @@ input:focus-visible {
 }
 
 .menu ul li.active a {
-    color: #000;
+    color: #fff;
 }
 
 .footer span {
@@ -749,4 +767,16 @@ button.pagination-btn img {
     display: inline-block;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.toggle-menu {
+    display: none;
+}
+
+.title {
+    gap: 30px;
+}
+
+.overlay {
+    display: none;
 }
