@@ -207,7 +207,9 @@ function displayStudents() {
     }
 }
 
-
+if (students.length === 0) {
+    addDemoStudents()
+}
 displayStudents();
 
 
