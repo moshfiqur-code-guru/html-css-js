@@ -1,0 +1,57 @@
+html, body {
+    font-family: "Poppins", sans-serif;
+}
+
+/*=======================================
+ HEADER ALERT STYLE
+=======================================*/
+.discount-offer-message {
+    font-size: 13px;
+}
+
+.badge {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+/*=======================================
+ HEADER TOP
+=======================================*/
+.form-select-custom-size {
+    width: 96px;
+    font-size: 13px;
+    padding: 6px 33px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+}
+
+#header-top .navbar-nav li a, #header-bottom .navbar-nav li a {
+    font-size: 16px;
+    color: #fff;
+}
+
+#header-bottom .navbar-nav li a {
+    color: #000;
+}
+
+.navbar #headerBottom .input-group input.form-control {
+    width: 40%;
+}
+
+#headerBottom select {
+    font-size: 14px;
+}
+
+#headerBottom li a i {
+    font-size: 25px;
+}
+
+.call-us-now .blockquote {
+    font-size: 16px;
+}
+
+.call-us-now .blockquote-footer {
+    font-size: 13px;
+    margin-bottom: 0;
+}
