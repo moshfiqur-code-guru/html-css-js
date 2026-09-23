@@ -24,24 +24,26 @@
 <section id="header-top">
     <nav class="navbar bg-primary navbar-expand-lg p-0">
         <div class="container">
-            <a class="navbar-brand text-white p-0" href="#">Navbar</a>
+            <div class="navbar-brand text-white p-0 d-flex align-items-center" href="#">
+                <select class="form-select form-select-custom-size">
+                    <option>USD</option>
+                    <option>BDT</option>
+                    <option>UAD</option>
+                </select>
+                <select class="form-select form-select-custom-size">
+                    <option>EN</option>
+                    <option>BN</option>
+                    <option>FR</option>
+                    <option>AR</option>
+                </select>
+            </div>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#headerTop">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="headerTop" class="collapse navbar-collapse">
                 <div class="d-flex flex-grow-1 justify-content-between">
                     <div class="col-3 d-flex">
-                        <select class="form-select form-select-custom-size">
-                            <option>USD</option>
-                            <option>BDT</option>
-                            <option>UAD</option>
-                        </select>
-                        <select class="form-select form-select-custom-size">
-                            <option>EN</option>
-                            <option>BN</option>
-                            <option>FR</option>
-                            <option>AR</option>
-                        </select>
+
                     </div>
                     <div class="col-7">
                         <ul class="navbar-nav justify-content-center">
@@ -65,8 +67,8 @@
 <section id="header-bottom">
     <nav class="navbar bg-light navbar-expand-lg p-0">
         <div class="container">
-            <a class="navbar-brand p-0" href="#">Navbar</a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#headerTop">
+            <a class="navbar-brand p-0 me-5" href="#"><img src="assets/images/logo.svg"/></a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#headerBottom">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="headerBottom" class="collapse navbar-collapse">
@@ -100,8 +102,14 @@
                     <div class="col-3">
                         <ul class="navbar-nav justify-content-end">
                             <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person"></i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-heart"></i></a></li>
-                            <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cart"></i></a></li>
+                            <li class="nav-item"><a class="nav-link position-relative" href="#">
+                                <i class="bi bi-heart"></i>
+                                <span class="badge bg-warning position-absolute top-5 start-50 rounded-pill">01</span>
+                            </a></li>
+                            <li class="nav-item"><a class="nav-link position-relative" href="#">
+                                <i class="bi bi-cart"></i>
+                                <span class="badge bg-primary position-absolute top-5 start-50 rounded-pill">01</span>
+                            </a></li>
                         </ul>
                     </div>
                 </div>
@@ -109,6 +117,112 @@
         </div>
     </nav>
 </section>
+<section id="offer-section" class="my-4">
+    <div class="container">
+        <div class="row  border">
+            <div class="col d-flex align-items-center gap-3">
+                <i class="bi bi-truck fs-2"></i>
+                <figure>
+                    <blockquote class="blockquote">
+                        <p>FREE SHIPPING & RETURN</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        Free shipping on all order over $99
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col d-flex align-items-center gap-3">
+                <i class="bi bi-currency-dollar fs-2"></i>
+                <figure>
+                    <blockquote class="blockquote">
+                        <p>MONEY BACK GUARANTEE</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        100% money back guarantee
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col d-flex align-items-center gap-3">
+                <i class="bi bi-person-raised-hand fs-2"></i>
+                <figure>
+                    <blockquote class="blockquote">
+                        <p>ONLINE SUPPORT 24/7</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        100% money back guarantee
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-3 gx-0">
+                <div class="category">
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-action active mb-2 fs-6">BROWSE CATEGORY</li>
+                    </ul>
+                    <ul class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action">Men’s Clothing</a>
+                        <a href="#" class="list-group-item list-group-item-action">Women’s
+                            Clothing</a>
+                        <a href="#" class="list-group-item list-group-item-action">Men’s
+                            Clothing</a>
+                        <a href="#" class="list-group-item list-group-item-action">Kids’s
+                            Clothing</a>
+                        <a href="#" class="list-group-item list-group-item-action">Shoes</a>
+
+                        <a href="#" class="list-group-item list-group-item-action">Bags</a>
+
+                        <a href="#"
+                           class="list-group-item list-group-item-action">Watches</a>
+                        <a href="#"
+                           class="list-group-item list-group-item-action">Jewelry</a>
+                        <a href="#" class="list-group-item list-group-item-action">Accessories</a>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="main-content">
+                    <div class="offer-slider">
+                        <div id="offerSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#offerSlider" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#offerSlider" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#offerSlider" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="assets/images/slider/slider-1.png"/>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/images/slider/slider-2.png"/>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/images/slider/slider-3.png"/>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" data-bs-target="#offerSlider" data-bs-slide="prev">
+                                <i class="carousel-control-prev-icon"></i>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" data-bs-target="#offerSlider" data-bs-slide="next">
+                                <i class="carousel-control-next-icon"></i>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>

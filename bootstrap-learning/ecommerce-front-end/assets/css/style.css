@@ -55,3 +55,58 @@ html, body {
     font-size: 13px;
     margin-bottom: 0;
 }
+
+.top-5 {
+    top: 5px;
+}
+
+/*=======================================
+ OFFER SECTION
+=======================================*/
+#offer-section .blockquote {
+    font-size: .70rem;
+}
+
+#offer-section .blockquote-footer {
+    font-size: .60rem;
+    margin-bottom: 0;
+}
+
+#offer-section figure {
+    margin-bottom: 0;
+}
+
+#offer-section .col {
+    position: relative;
+}
+
+#offer-section .col::after {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    content: "";
+    width: 2px;
+    height: 80%;
+    background: #ddd;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+#offer-section .col:nth-of-type(3):after {
+    content: none;
+}
+
+/*=======================================
+ MAIN SECTION
+=======================================*/
+#main {
+}
+
+#main .list-group-item.list-group-item-action {
+    font-size: .70rem;
+}
+
+.offer-slider img {
+    width: 100%;
+    height: 450px;
+}
