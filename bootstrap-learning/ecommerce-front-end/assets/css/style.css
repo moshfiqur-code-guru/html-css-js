@@ -110,3 +110,52 @@ html, body {
     width: 100%;
     height: 450px;
 }
+
+
+/*
+======CAROUSEL ===
+*/
+
+.indicator-wrapper {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2px;
+    border-radius: 50%;
+    transition: 1000ms ease;
+}
+
+.carousel-indicators .indicator-wrapper [data-bs-target] {
+    margin: 0;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+}
+
+.indicator-wrapper:has(.active) {
+    border-color: #fff;
+    transform: scale(1.2);
+}
+
+/*
+DEAL
+*/
+
+.todays-deals img {
+    width: 100%;
+    /*filter: grayscale(60%);*/
+    /*filter: brightness(1.2);*/
+    /*filter: contrast(3);*/
+    /*filter: hue-rotate(300deg);*/
+    /*filter: saturate(8.5);*/
+    /*filter: invert(70%);*/
+    /*filter: drop-shadow(5px 5px 5px #0a53be);*/
+    
+}
+
+/*.todays-deals img:hover {*/
+/*    filter: grayscale(0%);*/
+/*}*/
