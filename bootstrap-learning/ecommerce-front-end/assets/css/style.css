@@ -2,6 +2,19 @@ html, body {
     font-family: "Poppins", sans-serif;
 }
 
+:root {
+    --default-color: red;
+    --btn-color: yellow;
+    --fade-background-color: rgba(0, 0, 0, .2);
+    --title-font-size: 16px;
+    --title-font-weight: bold;
+    --fallback-font-size: 20px
+}
+
+.section-block {
+    margin-bottom: 20px;
+}
+
 /*=======================================
  HEADER ALERT STYLE
 =======================================*/
@@ -153,9 +166,69 @@ DEAL
     /*filter: saturate(8.5);*/
     /*filter: invert(70%);*/
     /*filter: drop-shadow(5px 5px 5px #0a53be);*/
-    
+
 }
 
 /*.todays-deals img:hover {*/
 /*    filter: grayscale(0%);*/
 /*}*/
+
+.deal-content {
+    background: var(--fade-background-color);
+}
+
+.title {
+    font-size: var(--title-font-size, var(--fallback-font-size));
+    font-weight: var(--title-font-weight, 500)
+}
+
+/*
+FEATURED PRODUCTS
+*/
+.owl-theme-title {
+
+}
+
+.owl-theme-title .owl-nav {
+    position: absolute;
+    top: -71px;
+    right: 0px;
+    display: flex;
+    gap: 6px;
+    font-size: 43px;
+}
+
+.product-content.d-flex.flex-column {
+    background: #ddd;
+    font-size: 16px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.product-content .like {
+    cursor: pointer;
+}
+
+.product-content .name {
+    font-weight: 600;
+}
+
+.product-content span.stars span {
+    color: #666;
+}
+
+.product-content .price {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.buttons .button {
+    background: #000;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
