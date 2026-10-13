@@ -8,11 +8,21 @@ html, body {
     --fade-background-color: rgba(0, 0, 0, .2);
     --title-font-size: 16px;
     --title-font-weight: bold;
-    --fallback-font-size: 20px
+    --fallback-font-size: 20px;
+    --bs-body-font-size: .65rem;
+}
+
+html body {
+    font-size: var(--bs-body-font-size);
 }
 
 .section-block {
     margin-bottom: 20px;
+}
+
+.section-block button.btn {
+    font-size: 15px;
+    text-transform: capitalize;
 }
 
 /*=======================================
@@ -189,6 +199,7 @@ FEATURED PRODUCTS
 
 }
 
+
 .owl-theme-title .owl-nav {
     position: absolute;
     top: -71px;
@@ -211,10 +222,12 @@ FEATURED PRODUCTS
 
 .product-content .name {
     font-weight: 600;
+    font-size: 14px;
 }
 
 .product-content span.stars span {
     color: #666;
+    font-size: 12px;
 }
 
 .product-content .price {
@@ -222,8 +235,41 @@ FEATURED PRODUCTS
     font-size: 14px;
 }
 
+
+.product-thumb:hover .actions {
+    visibility: visible;
+    opacity: 1;
+}
+
+.actions {
+    visibility: hidden;
+    opacity: 0;
+    transition: 500ms ease-in-out;
+    perspective: 400px;
+}
+
+.actions .view {
+    cursor: pointer;
+    font-size: 15px;
+    transform: rotateX(106deg);
+    transform-origin: bottom;
+    transition: 400ms linear;
+    transition-delay: 200ms;
+}
+
+.product-thumb:hover .actions .view {
+    transform: rotateX(0deg);
+}
+
+.buttons {
+    filter: url(#goo);
+    cursor: pointer;
+    display: flex;
+    gap: 2px;
+    height: 40px;
+}
+
 .buttons .button {
-    background: #000;
     color: #fff;
     width: 40px;
     height: 40px;
@@ -231,4 +277,60 @@ FEATURED PRODUCTS
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 1;
 }
+
+.button .blurred {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bs-primary);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.buttons .button span {
+    font-size: 16px;
+}
+
+.multiple-view .product-thumb {
+    width: 40%;
+}
+
+.multiple-view .product-content.d-flex.flex-column {
+    border-left: 1px solid #ddd;
+    justify-content: center;
+    background: none;
+}
+
+.separator {
+    width: 100%;
+    height: 2px;
+    border-top: 1px solid #ddd;
+    padding: 10px
+}
+
+
+h3, .h3 {
+    font-size: calc(.70rem);
+}
+
+@media (min-width: 1200px) {
+    h3, .h3 {
+        font-size: .70rem;
+    }
+}
+
+h4, .h4 {
+    font-size: calc(1.275rem + 0.3vw);
+}
+
+@media (min-width: 1200px) {
+    h4, .h4 {
+        font-size: 1.5rem;
+    }
+}
+
