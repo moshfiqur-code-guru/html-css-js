@@ -12,8 +12,16 @@ html, body {
     --bs-body-font-size: .65rem;
 }
 
+.form-control {
+    font-size: .65rem;
+}
+
 html body {
     font-size: var(--bs-body-font-size);
+}
+
+button.btn {
+    font-size: 17px;
 }
 
 .section-block {
@@ -151,11 +159,26 @@ html body {
     transition: 1000ms ease;
 }
 
+.carousel-indicators.indicators-sm .indicator-wrapper {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #999;
+}
+
+.carousel-indicators.indicators-dark .indicator-wrapper {
+    border-color: #000;
+}
+
 .carousel-indicators .indicator-wrapper [data-bs-target] {
     margin: 0;
     width: 70%;
     height: 70%;
     border-radius: 50%;
+    border: none;
+}
+
+.carousel-indicators.is-bottom-0 {
+    margin-bottom: 0;
 }
 
 .indicator-wrapper:has(.active) {
@@ -163,10 +186,18 @@ html body {
     transform: scale(1.2);
 }
 
+.carousel-indicators.indicators-dark .indicator-wrapper:has(.active) {
+    border-color: var(--bs-primary);
+    transform: scale(1.2);
+}
+
+.carousel-indicators.indicators-dark .indicator-wrapper .active {
+    background: var(--bs-primary);
+}
+
 /*
 DEAL
 */
-
 .todays-deals img {
     width: 100%;
     /*filter: grayscale(60%);*/
@@ -300,10 +331,9 @@ FEATURED PRODUCTS
     width: 40%;
 }
 
-.multiple-view .product-content.d-flex.flex-column {
-    border-left: 1px solid #ddd;
+.section-block.product-block.multiple-view .product-content {
     justify-content: center;
-    background: none;
+    background: transparent;
 }
 
 .separator {
@@ -313,6 +343,62 @@ FEATURED PRODUCTS
     padding: 10px
 }
 
+
+/*
+============================
+REVIEW
+==============
+*/
+
+
+.reviews .blockquote {
+    font-size: .8rem;
+    margin-bottom: 0;
+}
+
+.reviews .blockquote-footer {
+    font-size: 0.7em;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: block;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*
+BLOG
+*/
+.date-badge {
+    background: rgba(255, 255, 255, .5);
+    border-radius: 5px;
+    padding: 3px 5px;
+    left: 10px;
+    top: 10px
+
+}
+
+
+/*
+=====================
+FOOTER SECTION
+
+=================
+
+*/
+.footer-section {
+    background: #222529;
+    height: 400px;
+    margin-top: 50px;
+}
 
 h3, .h3 {
     font-size: calc(.70rem);
