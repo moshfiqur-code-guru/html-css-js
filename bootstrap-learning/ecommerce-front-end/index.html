@@ -348,13 +348,46 @@
                     </div>
                 </div>
                 <div class="blog border border-1 rounded-2 overflow-hidden">
-                    <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="blogCarousel">
+                    <div class="carousel slide carousel-fade" data-bs-ride="carousel" id="blogCarousel"
+                         data-bs-interval="2000">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="blog-thumb position-relative">
                                     <img class="img-fluid" src="assets/images/blog-1.jpg" alt="blog-1"/>
                                     <div class="date-badge position-absolute top-5">
                                         <span>12</span>
+                                        <span>JAN</span>
+                                    </div>
+                                </div>
+                                <div class="blog-short-content p-2">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, culpa
+                                    dignissimos dolor et excepturi facere illo...
+                                </div>
+                                <div class="read-more">
+                                    <button class="btn btn-sm">read more ></button>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="blog-thumb position-relative">
+                                    <img class="img-fluid" src="assets/images/blog-1.jpg" alt="blog-1"/>
+                                    <div class="date-badge position-absolute top-5">
+                                        <span>13</span>
+                                        <span>DEC</span>
+                                    </div>
+                                </div>
+                                <div class="blog-short-content p-2">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, culpa
+                                    dignissimos dolor et excepturi facere illo...
+                                </div>
+                                <div class="read-more">
+                                    <button class="btn btn-sm">read more ></button>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="blog-thumb position-relative">
+                                    <img class="img-fluid" src="assets/images/blog-1.jpg" alt="blog-1"/>
+                                    <div class="date-badge position-absolute top-5">
+                                        <span>14</span>
                                         <span>JAN</span>
                                     </div>
                                 </div>
@@ -974,7 +1007,77 @@
         </filter>
     </defs>
 </svg>
-<section id="footer" class="footer-section"></section>
+<section id="footer" class="footer-section text-body-gray-500 py-4">
+    <div class="container">
+        <div class="row footer-top">
+            <div class="col-3 ps-0 d-flex flex-column gap-2 align-items-start">
+                <h3 class="text-uppercase text-white">About us</h3>
+                <img src="assets/images/logo.svg"/>
+                <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias aliquid architecto
+                    cupiditate
+                    deserunt dolor ducimus fugiat neque nulla omnis provident quae quam repudiandae, suscipit
+                    voluptatibus. Fugit impedit minima sint.</p>
+            </div>
+            <div class="col-3 d-flex flex-column gap-2">
+                <h3 class="text-uppercase text-white">Contact Info</h3>
+                <div class="contact-block">
+                    <h3 class="semi-title text-uppercase text-white mb-0">address:</h3>
+                    <span>123 Street name, City, USA</span>
+                </div>
+                <div class="contact-block">
+                    <h3 class="semi-title text-uppercase text-white mb-0">phone:</h3>
+                    <span>(123) 456-7890</span>
+                </div>
+                <div class="contact-block">
+                    <h3 class="semi-title text-uppercase text-white mb-0">email:</h3>
+                    <span>mail@example.com</span>
+                </div>
+                <div class="contact-block">
+                    <h3 class="semi-title text-uppercase text-white mb-0">working days/hours:</h3>
+                    <span>mon-sun/9.00 AM - 8.00 PM</span>
+                </div>
+            </div>
+            <div class="col-3 d-flex flex-column gap-2">
+                <h3 class="text-uppercase text-white">Customer service</h3>
+                <ul class="list-unstyled">
+                    <li><a class="text-decoration-none text-body-gray-500" href="#">Shipping & Deliver</a></li>
+                    <li><a class="text-decoration-none text-body-gray-500" href="#">Help & FAQs</a></li>
+                    <li><a class="text-decoration-none text-body-gray-500" href="#">Order Tracking</a></li>
+                    <li><a class="text-decoration-none text-body-gray-500" href="#">Careers</a></li>
+                    <li><a class="text-decoration-none text-body-gray-500" href="#">Order History</a></li>
+                    <li><a class="text-decoration-none text-body-gray-500" href="#">Privacy</a></li>
+                </ul>
+            </div>
+            <div class="col-3 d-flex flex-column gap-2">
+                <h3 class="text-uppercase text-white">Popular Tags</h3>
+                <div class="d-flex gap-1 flex-wrap">
+                    <span class="badge text-bg-secondary">Bag</span>
+                    <span class="badge text-bg-secondary">Black</span>
+                    <span class="badge text-bg-secondary">Blue</span>
+                    <span class="badge text-bg-secondary">Clothes</span>
+                    <span class="badge text-bg-secondary">Fashion</span>
+                    <span class="badge text-bg-secondary">Jeans</span>
+                    <span class="badge text-bg-secondary">Shirt</span>
+                    <span class="badge text-bg-secondary">Skirt</span>
+                    <span class="badge text-bg-secondary">Sports</span>
+                    <span class="badge text-bg-secondary">Sweater</span>
+                    <span class="badge text-bg-secondary">Winter</span>
+                </div>
+            </div>
+        </div>
+        <div class="row footer-bottom border-1 border-top border-secondary pt-3">
+            <div class="col-6 ps-0">
+                <span>&COPY; Nomu ecom 2026. All Rights Reserved</span>
+            </div>
+            <div class="col-6 text-end pe-0">
+                <span class="badge text-bg-secondary"><span class="bi bi-paypal"></span></span>
+                <span class="badge text-bg-secondary"><span class="bi bi-stripe"></span></span>
+                <span class="badge text-bg-secondary"><span class="bi bi-alipay"></span></span>
+                <span class="badge text-bg-secondary"><span class="bi bi-amazon"></span></span>
+            </div>
+        </div>
+    </div>
+</section>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
