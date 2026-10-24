@@ -28,6 +28,10 @@ button.btn {
     font-size: 17px;
 }
 
+button.btn.btn-sm {
+    font-size: 13px;
+}
+
 .section-block {
     margin-bottom: 20px;
 }
@@ -437,4 +441,36 @@ FOOTER
 
 .footer-section .footer-top img {
     filter: invert();
+}
+
+
+/*CART*/
+.cart-dropdown span {
+    font-size: 15px;
+    font-weight: 500
+}
+
+.cart-dropdown {
+    width: 400px
+}
+
+.cart-dropdown .cart-item img {
+    width: 40px
+}
+
+.cart-dropdown span {
+    font-size: 12px;
+}
+
+.close span {
+    font-size: 20px;
+    color: var(--bs-red)
+}
+
+.name {
+    margin-top: -14px;
+}
+
+.name span {
+    line-height: 5px;
 }
