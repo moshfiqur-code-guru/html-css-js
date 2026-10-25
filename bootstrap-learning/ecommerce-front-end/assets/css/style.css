@@ -454,6 +454,10 @@ FOOTER
     width: 400px
 }
 
+.cart-dropdown.order {
+    width: auto;
+}
+
 .cart-dropdown .cart-item img {
     width: 40px
 }
@@ -473,4 +477,19 @@ FOOTER
 
 .name span {
     line-height: 5px;
+}
+
+/*
+========================
+SHOPPING CART PAGE
+===================
+
+*/
+.shopping-cart {
+}
+
+.shopping-cart img {
+    width: 60px;
+    display: inline-block;
+    margin-right: 5px;
 }
