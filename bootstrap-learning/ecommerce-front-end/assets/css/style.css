@@ -34,6 +34,7 @@ button.btn.btn-sm {
 
 .section-block {
     margin-bottom: 20px;
+    min-height: 370px;
 }
 
 .section-block button.btn {
@@ -492,4 +493,17 @@ SHOPPING CART PAGE
     width: 60px;
     display: inline-block;
     margin-right: 5px;
+}
+
+/*
+=======================
+ORDER PLACED
+===================
+*/
+.order-placed .success-icon {
+    font-size: 80px;
+}
+
+.success-icon + span {
+    margin-top: -15px;
 }
