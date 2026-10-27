@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     font-family: "Poppins", sans-serif;
 }
 
@@ -66,7 +67,8 @@ button.btn.btn-sm {
     border: none;
 }
 
-#header-top .navbar-nav li a, #header-bottom .navbar-nav li a {
+#header-top .navbar-nav li a,
+#header-bottom .navbar-nav li a {
     font-size: 16px;
     color: #fff;
 }
@@ -139,8 +141,7 @@ button.btn.btn-sm {
 /*=======================================
  MAIN SECTION
 =======================================*/
-#main {
-}
+#main {}
 
 #main .list-group-item.list-group-item-action {
     font-size: .70rem;
@@ -235,9 +236,7 @@ DEAL
 /*
 FEATURED PRODUCTS
 */
-.owl-theme-title {
-
-}
+.owl-theme-title {}
 
 
 .owl-theme-title .owl-nav {
@@ -392,7 +391,6 @@ BLOG
     padding: 3px 5px;
     left: 10px;
     top: 10px
-
 }
 
 
@@ -409,7 +407,8 @@ FOOTER SECTION
     margin-top: 50px;
 }
 
-h3, .h3 {
+h3,
+.h3 {
     font-size: calc(.70rem);
 }
 
@@ -418,17 +417,22 @@ h3.semi-title {
 }
 
 @media (min-width: 1200px) {
-    h3, .h3 {
+
+    h3,
+    .h3 {
         font-size: .70rem;
     }
 }
 
-h4, .h4 {
+h4,
+.h4 {
     font-size: calc(1.275rem + 0.3vw);
 }
 
 @media (min-width: 1200px) {
-    h4, .h4 {
+
+    h4,
+    .h4 {
         font-size: 1.5rem;
     }
 }
@@ -486,8 +490,7 @@ SHOPPING CART PAGE
 ===================
 
 */
-.shopping-cart {
-}
+.shopping-cart {}
 
 .shopping-cart img {
     width: 60px;
@@ -504,7 +507,7 @@ ORDER PLACED
     font-size: 80px;
 }
 
-.success-icon + span {
+.success-icon+span {
     margin-top: -15px;
 }
 
@@ -526,4 +529,19 @@ ACCOUNT===========
     height: 90%;
     border-left: 2px solid #ddd;
     border-radius: 53%;
+}
+
+.main-img {
+    height: 430px;
+    width: 430px;
+}
+
+.more-product-img {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+}
+
+.size-sellector button {
+    font-size: 10px !important;
 }
