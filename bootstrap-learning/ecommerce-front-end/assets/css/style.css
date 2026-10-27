@@ -507,3 +507,23 @@ ORDER PLACED
 .success-icon + span {
     margin-top: -15px;
 }
+
+/*
+=========================
+ACCOUNT===========
+=====================
+*/
+.account-card .nav.nav-pills button {
+    background: transparent;
+}
+
+.account-card .nav.nav-pills button.active {
+    color: #000
+}
+
+.account-card .divider {
+    width: 2px;
+    height: 90%;
+    border-left: 2px solid #ddd;
+    border-radius: 53%;
+}
