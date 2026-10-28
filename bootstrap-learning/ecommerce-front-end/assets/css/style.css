@@ -141,7 +141,8 @@ button.btn.btn-sm {
 /*=======================================
  MAIN SECTION
 =======================================*/
-#main {}
+#main {
+}
 
 #main .list-group-item.list-group-item-action {
     font-size: .70rem;
@@ -236,7 +237,8 @@ DEAL
 /*
 FEATURED PRODUCTS
 */
-.owl-theme-title {}
+.owl-theme-title {
+}
 
 
 .owl-theme-title .owl-nav {
@@ -294,6 +296,16 @@ FEATURED PRODUCTS
     transform-origin: bottom;
     transition: 400ms linear;
     transition-delay: 200ms;
+
+}
+
+.product-thumb .actions {
+    pointer-events: none;
+}
+
+.product-thumb .actions .buttons,
+.product-thumb .actions .view {
+    pointer-events: auto;
 }
 
 .product-thumb:hover .actions .view {
@@ -490,7 +502,8 @@ SHOPPING CART PAGE
 ===================
 
 */
-.shopping-cart {}
+.shopping-cart {
+}
 
 .shopping-cart img {
     width: 60px;
@@ -507,7 +520,7 @@ ORDER PLACED
     font-size: 80px;
 }
 
-.success-icon+span {
+.success-icon + span {
     margin-top: -15px;
 }
 
@@ -544,4 +557,26 @@ ACCOUNT===========
 
 .size-sellector button {
     font-size: 10px !important;
+}
+
+.carousel-thumbnail img {
+    width: 80px;
+    object-fit: cover;
+}
+
+#productDetails .carousel-indicators [data-bs-target] {
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    border: 0;
+    border-top: none;
+    border-bottom: none;
+}
+
+#productDetails .carousel-indicators .active {
+    opacity: 1;
+}
+
+#productDetails .carousel-indicators {
+    bottom: -90px;
 }
