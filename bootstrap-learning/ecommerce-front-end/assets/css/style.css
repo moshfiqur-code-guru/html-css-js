@@ -580,3 +580,13 @@ ACCOUNT===========
 #productDetails .carousel-indicators {
     bottom: -90px;
 }
+
+/*
+=========== BLOG
+*/
+.blog-separator {
+    width: 100%;
+    height: 8px;
+    background: #f2f2f2;
+    margin: 15px 0;
+}

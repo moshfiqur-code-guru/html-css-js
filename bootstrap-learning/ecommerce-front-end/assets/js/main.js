@@ -25,4 +25,7 @@ const carts = [
     }
 ];
 
+function getProductDetails(id) {
+    const data = {}
+}
 
