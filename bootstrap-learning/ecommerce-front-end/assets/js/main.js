@@ -65,7 +65,7 @@ function Cart() {
     function addToCart(qty, product) {
         totalPrice += product.price * qty;
         totalItem += qty;
-        cartItems.push({...product, qty: qty});
+        cartItems.push({ ...product, qty: qty });
         displayCart();
     }
 
@@ -79,8 +79,20 @@ function Cart() {
         cartQty.innerText = totalItem;
         subtotal.innerText = '$' + totalPrice.toFixed(2);
 
-        cart.innerHTML = cartItems.map(product => (
-            `<div
+        if (cartItems.length === 0) {
+            cart.innerHTML =
+                ` <div class="text-center py-4">
+                <i class="bi bi-cart-x fs-1 text-secondary"></i>
+                <p class="mb-0 mt-2 text-muted">
+                    No items added to the cart.
+                </p>
+            </div>`;
+            return;
+        }
+
+        else {
+            cart.innerHTML = cartItems.map(product => (
+                `<div
                                                         class="cart-item d-flex align-items-center justify-content-between border-1 border-bottom pb-2">
                                                     <img class="img-fluid"
                                                          src="https://img.drz.lazcdn.com/static/bd/p/9b8deff622ce4918404fc833f1fb4abe.jpg_960x960q80.jpg_.webp"/>
@@ -105,10 +117,11 @@ function Cart() {
                                                                 class="bi bi-x"></span></button>
                                                     </div>
                                                 </div>`
-        )).join("")
+            )).join("")
+        }
     }
 
-    return {totalPrice, totalItem, cartItems, addToCart, displayCart}
+    return { totalPrice, totalItem, cartItems, addToCart, displayCart }
 }
 
 function ecommerceManagement() {
@@ -177,7 +190,7 @@ function ecommerceManagement() {
     }
 
 
-    return {saveProductsInStorage, getProducts, displayProducts}
+    return { saveProductsInStorage, getProducts, displayProducts }
 }
 
 
