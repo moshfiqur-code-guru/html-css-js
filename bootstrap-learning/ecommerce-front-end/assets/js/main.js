@@ -7,7 +7,8 @@ $(document).ready(function () {
         dots: false
     });
 });
-
+const cartFooter = document.getElementById("cart-footer");
+cartFooter.style.display = "none"
 const prdts = [
     {
         productId: 1,
@@ -58,26 +59,56 @@ const prdts = [
 
 
 function Cart() {
-    let totalItem = 0;
-    let totalPrice = 0;
-    let cartItems = [];
 
+    //private closure state
+    let cartItems = JSON.parse(localStorage.getItem("carts")) || []
+    let totalPrice = 0;
+    let totalItem = 0;
+
+    function saveCart() {
+        localStorage.setItem("cars", JSON.stringify(cartItems))
+    }
+
+    //================
+    //CART CALCULATION
+    //=============
+    function calculateCart() {
+        const totalItem = cartItems.reduce((totalItem, cartItem) => totalItem + cartItem.qty, 0) ?? 0;
+        const totalPrice = cartItems.reduce((price, cartItem) => price + (cartItem.price * cartItem.qty), 0) ?? 0;
+        return {totalItem, totalPrice}
+    }
+
+    //================
+    //ADD ITEM INTO CART
+    //=============
     function addToCart(qty, product) {
-        totalPrice += product.price * qty;
-        totalItem += qty;
-        cartItems.push({ ...product, qty: qty });
+        if (!Number(qty) || qty <= 0) return;
+        const existingProduct = cartItems.find(item => item.productId === product.productId)
+        if (!existingProduct) {
+            cartItems.push({...product, qty: qty});
+        } else {
+            const updatedCarts = cartItems.map(item => {
+                if (item.productId === product.productId) {
+                    return {...item, qty: item.qty + qty}
+                }
+                return item;
+            });
+            cartItems = updatedCarts;
+        }
         displayCart();
     }
 
     function displayCart() {
+        const {totalItem, totalPrice} = calculateCart();
         let cartQty = document.getElementById("cart-qty");
         let subtotal = document.getElementById("subtotal");
+        let totalspan = document.getElementById("totalItem");
         let cart = document.querySelector(".cart-items");
+
         cart.innerHTML = "";
-        cartQty.innerText = "0";
-        subtotal.innerText = "0";
-        cartQty.innerText = totalItem;
+        cartQty.innerText = totalItem.toString();
         subtotal.innerText = '$' + totalPrice.toFixed(2);
+        totalspan.innerText = totalItem + ((totalItem === 0 || totalItem > 1) ? " items" : " item")
 
         if (cartItems.length === 0) {
             cart.innerHTML =
@@ -88,11 +119,11 @@ function Cart() {
                 </p>
             </div>`;
             return;
-        }
+        } else {
 
-        else {
-            cart.innerHTML = cartItems.map(product => (
-                `<div
+            cartItems.map(product => {
+                const template = document.createElement("template")
+                template.innerHTML = `<div
                                                         class="cart-item d-flex align-items-center justify-content-between border-1 border-bottom pb-2">
                                                     <img class="img-fluid"
                                                          src="https://img.drz.lazcdn.com/static/bd/p/9b8deff622ce4918404fc833f1fb4abe.jpg_960x960q80.jpg_.webp"/>
@@ -103,7 +134,7 @@ function Cart() {
                                                     <div class="qty d-flex align-items-center gap-1">
                                                         <div
                                                                 class="qty-navigator d-flex flex-column justify-content-center align-items-center">
-                                                            <span class="bi bi-chevron-up"></span>
+                                                            <span  class="bi bi-chevron-up increment"></span>
                                                             <span>${product.qty}</span>
                                                             <span class="bi bi-chevron-down"></span>
                                                         </div>
@@ -117,32 +148,41 @@ function Cart() {
                                                                 class="bi bi-x"></span></button>
                                                     </div>
                                                 </div>`
-            )).join("")
+                const item = template.content.firstElementChild;
+                item.querySelector(".increment").addEventListener("click", () => {
+                    addToCart(1, product);
+                })
+                cart.appendChild(item)
+            })
+            cartFooter.style.display = "block"
         }
     }
 
-    return { totalPrice, totalItem, cartItems, addToCart, displayCart }
+    return {
+        totalPrice,
+        cartItems, addToCart, displayCart
+    }
+
 }
 
-function ecommerceManagement() {
+function EcommerceManagement() {
+
+    //PRIVATE PRODUCTS
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+
+    //===============
+    // SAVE PRODUCTS
+    // ============
     function saveProductsInStorage() {
         const productJSON = JSON.stringify(prdts)
         localStorage.setItem("products", productJSON);
     }
 
-    function getProducts() {
-        const productJSON = localStorage.getItem("products");
-        return JSON.parse(productJSON);
-    }
-
     function displayProducts() {
         const cart = Cart()
-        const products = getProducts();
         const carousel = document.getElementById("carousel-items");
         carousel.innerHTML = "";
-
-        // h1.textContent = ""
-        products.map(product => {
+        products.forEach(product => {
             const template = document.createElement("template")
             template.innerHTML = `<div class="item border border-1">
                                     <div class="product-thumb position-relative">
@@ -182,21 +222,21 @@ function ecommerceManagement() {
                                     </div>
                                 </div>`;
             const item = template.content.firstElementChild;
-            item.querySelector(".cartBtn").addEventListener("click", () => cart.addToCart(3, product))
+            item.querySelector(".cartBtn").addEventListener("click", () => {
+                cart.addToCart(1, product);
+            })
             carousel.appendChild(item)
 
-        })
+        });
+        cart.displayCart()
 
     }
 
-
-    return { saveProductsInStorage, getProducts, displayProducts }
+    return {saveProductsInStorage, displayProducts}
 }
 
 
-const ecom = ecommerceManagement();
+const ecommerceManagement = EcommerceManagement();
 //ecom.saveProductsInStorage()
-ecom.displayProducts();
+ecommerceManagement.displayProducts();
 
-const cart = Cart();
-cart.displayCart()

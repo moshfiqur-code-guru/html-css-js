@@ -127,23 +127,27 @@
                                         <div class="cart-dropdown px-2">
                                             <div
                                                     class="cart-title d-flex align-items-center justify-content-between border-bottom border-1 pb-2">
-                                                <span>3items</span>
-                                                <a href="cart.html" class="btn btn-secondary btn-sm">VIEW CART</a>
+                                                <span id="totalItem"></span>
+                                                <a href="cart.html" class="btn btn-secondary btn-sm text-white">VIEW
+                                                    CART</a>
                                             </div>
                                             <div class="cart-items py-2">
 
 
                                             </div>
-                                            <div
-                                                    class="sub-total d-flex align-items-center justify-content-evenly pt-1">
-                                                <span>SUBTOTAL:</span>
-                                                <span id="subtotal" class="fw-bold">$200.00</span>
-                                            </div>
-                                            <div class="text-center mt-3">
-                                                <a href="checkout.html" class="btn btn-dark rounded-0 d-block"
-                                                   style="width: 100%">
-                                                    GO TO CHECKOUT
-                                                </a>
+                                            <div id="cart-footer">
+                                                <div
+                                                        class="sub-total d-flex align-items-center justify-content-evenly pt-1">
+                                                    <span>SUBTOTAL:</span>
+                                                    <span id="subtotal" class="fw-bold"></span>
+                                                </div>
+                                                <div class="text-center mt-3">
+                                                    <a href="checkout.html"
+                                                       class="btn btn-dark rounded-0 d-block text-white"
+                                                       style="width: 100%">
+                                                        GO TO CHECKOUT
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -884,7 +888,7 @@
                                 <i class="bi bi-chevron-right text-dark fs-2"></i>
                                 <span class="visually-hidden">Next</span>
                             </button>
-                            <div class="carousel-indicators">
+                            <div class="carousel-indicators col-md">
                                 <div class="d-flex carousel-thumbnail gap-3 mt-2 justify-content-center">
 
                                     <img data-bs-target="#productDetails" data-bs-slide-to="0"
