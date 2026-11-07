@@ -66,7 +66,7 @@ function Cart() {
     let totalItem = 0;
 
     function saveCart() {
-        localStorage.setItem("cars", JSON.stringify(cartItems))
+        localStorage.setItem("carts", JSON.stringify(cartItems))
     }
 
     //================
@@ -75,7 +75,7 @@ function Cart() {
     function calculateCart() {
         const totalItem = cartItems.reduce((totalItem, cartItem) => totalItem + cartItem.qty, 0) ?? 0;
         const totalPrice = cartItems.reduce((price, cartItem) => price + (cartItem.price * cartItem.qty), 0) ?? 0;
-        return {totalItem, totalPrice}
+        return { totalItem, totalPrice }
     }
 
     //================
@@ -85,11 +85,11 @@ function Cart() {
         if (!Number(qty) || qty <= 0) return;
         const existingProduct = cartItems.find(item => item.productId === product.productId)
         if (!existingProduct) {
-            cartItems.push({...product, qty: qty});
+            cartItems.push({ ...product, qty: qty });
         } else {
             const updatedCarts = cartItems.map(item => {
                 if (item.productId === product.productId) {
-                    return {...item, qty: item.qty + qty}
+                    return { ...item, qty: item.qty + qty }
                 }
                 return item;
             });
@@ -99,7 +99,7 @@ function Cart() {
     }
 
     function displayCart() {
-        const {totalItem, totalPrice} = calculateCart();
+        const { totalItem, totalPrice } = calculateCart();
         let cartQty = document.getElementById("cart-qty");
         let subtotal = document.getElementById("subtotal");
         let totalspan = document.getElementById("totalItem");
@@ -141,7 +141,7 @@ function Cart() {
                                                         <span class="bi bi-x"></span>
                                                         <span class="text-muted">${'$' + product.price.toFixed(2)}</span>
                                                         <span>=</span>
-                                                        <span>${'$' + (product.price * product.qty).toFixed(2)}</span>
+                                                        <span class="itemTotalPrice">${'$' + (product.price * product.qty).toFixed(2)}</span>
                                                     </div>
                                                     <div class="close">
                                                         <button class="border-0 bg-transparent"><span
@@ -232,7 +232,7 @@ function EcommerceManagement() {
 
     }
 
-    return {saveProductsInStorage, displayProducts}
+    return { saveProductsInStorage, displayProducts }
 }
 
 

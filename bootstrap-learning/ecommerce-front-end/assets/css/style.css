@@ -460,6 +460,23 @@ FOOTER
 
 
 /*CART*/
+
+.dropdown-menu .cart-dropdown {
+    width: 450px;
+}
+
+.qty-navigator {
+    width: 35px;
+}
+
+.itemTotalPrice {
+    width: 70px;
+}
+
+#subtotal {
+    width: 100px;
+}
+
 .cart-dropdown span {
     font-size: 15px;
     font-weight: 500
