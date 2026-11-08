@@ -141,7 +141,8 @@ button.btn.btn-sm {
 /*=======================================
  MAIN SECTION
 =======================================*/
-#main {}
+#main {
+}
 
 #main .list-group-item.list-group-item-action {
     font-size: .70rem;
@@ -236,7 +237,8 @@ DEAL
 /*
 FEATURED PRODUCTS
 */
-.owl-theme-title {}
+.owl-theme-title {
+}
 
 
 .owl-theme-title .owl-nav {
@@ -511,13 +513,18 @@ FOOTER
     line-height: 5px;
 }
 
+.qty span {
+    cursor: pointer;
+}
+
 /*
 ========================
 SHOPPING CART PAGE
 ===================
 
 */
-.shopping-cart {}
+.shopping-cart {
+}
 
 .shopping-cart img {
     width: 60px;
@@ -534,7 +541,7 @@ ORDER PLACED
     font-size: 80px;
 }
 
-.success-icon+span {
+.success-icon + span {
     margin-top: -15px;
 }
 

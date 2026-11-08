@@ -75,55 +75,71 @@ function Cart() {
     function calculateCart() {
         const totalItem = cartItems.reduce((totalItem, cartItem) => totalItem + cartItem.qty, 0) ?? 0;
         const totalPrice = cartItems.reduce((price, cartItem) => price + (cartItem.price * cartItem.qty), 0) ?? 0;
-        return { totalItem, totalPrice }
+        return {totalItem, totalPrice}
     }
 
     //================
     //ADD ITEM INTO CART
     //=============
-    function addToCart(qty, product) {
+    function addToCart(qty, product, type) {
         if (!Number(qty) || qty <= 0) return;
-        const existingProduct = cartItems.find(item => item.productId === product.productId)
-        if (!existingProduct) {
-            cartItems.push({ ...product, qty: qty });
+        const existingProduct = cartItems.find(item => item.productId === product.productId);
+        let absQty = Math.floor(Number(qty))
+        if (existingProduct) {
+            let updatedQty = type === "increment" ? absQty : -absQty
+            existingProduct["qty"] = Math.max(1, (existingProduct.qty + updatedQty))
         } else {
-            const updatedCarts = cartItems.map(item => {
-                if (item.productId === product.productId) {
-                    return { ...item, qty: item.qty + qty }
-                }
-                return item;
-            });
-            cartItems = updatedCarts;
+            cartItems.push({...product, qty: absQty});
         }
-        displayCart();
+        saveCart()
     }
 
-    function displayCart() {
-        const { totalItem, totalPrice } = calculateCart();
-        let cartQty = document.getElementById("cart-qty");
-        let subtotal = document.getElementById("subtotal");
-        let totalspan = document.getElementById("totalItem");
-        let cart = document.querySelector(".cart-items");
+    function deleteCart(productId) {
+        const carts = cartItems.slice();
+        const updatedItems = carts.filter(item => item.productId !== productId);
+        cartItems = updatedItems;
+        saveCart()
+    }
 
-        cart.innerHTML = "";
-        cartQty.innerText = totalItem.toString();
-        subtotal.innerText = '$' + totalPrice.toFixed(2);
-        totalspan.innerText = totalItem + ((totalItem === 0 || totalItem > 1) ? " items" : " item")
+    return {
+        totalPrice,
+        get cartItems() {
+            return cartItems
+        },
+        addToCart,
+        calculateCart,
+        deleteCart
+    }
 
-        if (cartItems.length === 0) {
-            cart.innerHTML =
-                ` <div class="text-center py-4">
+}
+
+const cart = Cart();
+
+function displayCart() {
+    const {totalItem, totalPrice} = cart.calculateCart();
+    let cartQty = document.getElementById("cart-qty");
+    let subtotal = document.getElementById("subtotal");
+    let totalspan = document.getElementById("totalItem");
+    let cartContainer = document.querySelector(".cart-items");
+
+    cartContainer.innerHTML = "";
+    cartQty.innerText = totalItem.toString();
+    subtotal.innerText = '$' + totalPrice.toFixed(2);
+    totalspan.innerText = totalItem + ((totalItem === 0 || totalItem > 1) ? " items" : " item")
+
+    if (cart.cartItems.length === 0) {
+        cartContainer.innerHTML =
+            ` <div class="text-center py-4">
                 <i class="bi bi-cart-x fs-1 text-secondary"></i>
                 <p class="mb-0 mt-2 text-muted">
                     No items added to the cart.
                 </p>
             </div>`;
-            return;
-        } else {
-
-            cartItems.map(product => {
-                const template = document.createElement("template")
-                template.innerHTML = `<div
+        cartFooter.style.display = "none"
+    } else {
+        cart.cartItems.map(product => {
+            const template = document.createElement("template")
+            template.innerHTML = `<div
                                                         class="cart-item d-flex align-items-center justify-content-between border-1 border-bottom pb-2">
                                                     <img class="img-fluid"
                                                          src="https://img.drz.lazcdn.com/static/bd/p/9b8deff622ce4918404fc833f1fb4abe.jpg_960x960q80.jpg_.webp"/>
@@ -134,9 +150,9 @@ function Cart() {
                                                     <div class="qty d-flex align-items-center gap-1">
                                                         <div
                                                                 class="qty-navigator d-flex flex-column justify-content-center align-items-center">
-                                                            <span  class="bi bi-chevron-up increment"></span>
+                                                            <span  class="bi bi-chevron-up increment qty-updater" data-qty="increment"></span>
                                                             <span>${product.qty}</span>
-                                                            <span class="bi bi-chevron-down"></span>
+                                                            <span class="bi bi-chevron-down qty-updater" data-qty="decrement"></span>
                                                         </div>
                                                         <span class="bi bi-x"></span>
                                                         <span class="text-muted">${'$' + product.price.toFixed(2)}</span>
@@ -148,22 +164,26 @@ function Cart() {
                                                                 class="bi bi-x"></span></button>
                                                     </div>
                                                 </div>`
-                const item = template.content.firstElementChild;
-                item.querySelector(".increment").addEventListener("click", () => {
-                    addToCart(1, product);
-                })
-                cart.appendChild(item)
+            const item = template.content.firstElementChild;
+            // item.querySelector(".increment").addEventListener("click", () => {
+            //     addToCart(1, product);
+            // });
+            const updaters = item.querySelectorAll(".qty-updater");
+            updaters.forEach(button => button.addEventListener("click", function () {
+                const type = event.target.dataset.qty;
+                cart.addToCart(1, product, type);
+                displayCart();
+            }));
+            item.querySelector(".close button").addEventListener("click", () => {
+                cart.deleteCart(product.productId);
+                displayCart();
             })
-            cartFooter.style.display = "block"
-        }
+            cartContainer.appendChild(item)
+        })
+        cartFooter.style.display = "block"
     }
-
-    return {
-        totalPrice,
-        cartItems, addToCart, displayCart
-    }
-
 }
+
 
 function EcommerceManagement() {
 
@@ -179,7 +199,6 @@ function EcommerceManagement() {
     }
 
     function displayProducts() {
-        const cart = Cart()
         const carousel = document.getElementById("carousel-items");
         carousel.innerHTML = "";
         products.forEach(product => {
@@ -223,20 +242,21 @@ function EcommerceManagement() {
                                 </div>`;
             const item = template.content.firstElementChild;
             item.querySelector(".cartBtn").addEventListener("click", () => {
-                cart.addToCart(1, product);
+                cart.addToCart(1, product, "increment");
+                displayCart()
             })
             carousel.appendChild(item)
-
         });
-        cart.displayCart()
-
+        displayCart()
     }
 
-    return { saveProductsInStorage, displayProducts }
+    return {saveProductsInStorage, displayProducts}
 }
 
 
 const ecommerceManagement = EcommerceManagement();
-//ecom.saveProductsInStorage()
+//ecommerceManagement.saveProductsInStorage()
 ecommerceManagement.displayProducts();
+
+
 
