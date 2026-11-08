@@ -75,7 +75,7 @@ function Cart() {
     function calculateCart() {
         const totalItem = cartItems.reduce((totalItem, cartItem) => totalItem + cartItem.qty, 0) ?? 0;
         const totalPrice = cartItems.reduce((price, cartItem) => price + (cartItem.price * cartItem.qty), 0) ?? 0;
-        return {totalItem, totalPrice}
+        return { totalItem, totalPrice }
     }
 
     //================
@@ -89,7 +89,7 @@ function Cart() {
             let updatedQty = type === "increment" ? absQty : -absQty
             existingProduct["qty"] = Math.max(1, (existingProduct.qty + updatedQty))
         } else {
-            cartItems.push({...product, qty: absQty});
+            cartItems.push({ ...product, qty: absQty });
         }
         saveCart()
     }
@@ -116,7 +116,7 @@ function Cart() {
 const cart = Cart();
 
 function displayCart() {
-    const {totalItem, totalPrice} = cart.calculateCart();
+    const { totalItem, totalPrice } = cart.calculateCart();
     let cartQty = document.getElementById("cart-qty");
     let subtotal = document.getElementById("subtotal");
     let totalspan = document.getElementById("totalItem");
@@ -250,7 +250,7 @@ function EcommerceManagement() {
         displayCart()
     }
 
-    return {saveProductsInStorage, displayProducts}
+    return { saveProductsInStorage, displayProducts }
 }
 
 
