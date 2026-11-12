@@ -1,16 +1,22 @@
+let orderTotal = 0;
+
+
+const DISCOUNT_CODE = {
+    '#NDH-DOC-DOG': 100,
+}
+
+function getDiscountAmountByCode(code) {
+    const amount = DISCOUNT_CODE[code];
+    orderTotal -= amount;
+}
 
 function displayCartPageCart() {
-    const { totalItem, totalPrice } = cart.calculateCart();
-    // let cartQty = document.getElementById("cart-qty");
-    // let subtotal = document.getElementById("subtotal");
-    // let totalspan = document.getElementById("totalItem");
-    let cartContainer = document.querySelector(".cart-items");
-
+    const {totalPrice} = cart.calculateCart();
+    let subtotal = document.querySelector(".subtotal");
+    let cartContainer = document.querySelector("#cart-table-items");
     cartContainer.innerHTML = "";
-    cartQty.innerText = totalItem.toString();
     subtotal.innerText = '$' + totalPrice.toFixed(2);
-    totalspan.innerText = totalItem + ((totalItem === 0 || totalItem > 1) ? " items" : " item")
-
+    orderTotal = subtotal;
     if (cart.cartItems.length === 0) {
         cartContainer.innerHTML =
             ` <div class="text-center py-4">
@@ -49,18 +55,17 @@ function displayCartPageCart() {
                             </tr>
                                                 `
             const item = template.content.firstElementChild;
-            // item.querySelector(".increment").addEventListener("click", () => {
-            //     addToCart(1, product);
-            // });
             const updaters = item.querySelectorAll(".qty-updater");
             updaters.forEach(button => button.addEventListener("click", function () {
                 const type = event.target.dataset.qty;
                 cart.addToCart(1, product, type);
                 displayCart();
+                displayCartPageCart();
             }));
             item.querySelector(".close button").addEventListener("click", () => {
                 cart.deleteCart(product.productId);
                 displayCart();
+                displayCartPageCart();
             })
             cartContainer.appendChild(item)
         })
@@ -68,3 +73,5 @@ function displayCartPageCart() {
 }
 
 displayCartPageCart();
+
+displayCart()

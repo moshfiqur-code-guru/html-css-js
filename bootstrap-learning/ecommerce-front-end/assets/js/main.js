@@ -7,7 +7,13 @@ $(document).ready(function () {
         dots: false
     });
 });
+
+const toastLiveExample = document.getElementById('liveToast')
+
+
 const cartFooter = document.getElementById("cart-footer");
+const carousel = document.getElementById("carousel-items");
+let cartContainer = document.querySelector("#cart-table-items");
 cartFooter.style.display = "none"
 const prdts = [
     {
@@ -57,6 +63,11 @@ const prdts = [
     }
 ];
 
+function displayToaster() {
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+    toastBootstrap.show()
+
+}
 
 function Cart() {
 
@@ -75,7 +86,7 @@ function Cart() {
     function calculateCart() {
         const totalItem = cartItems.reduce((totalItem, cartItem) => totalItem + cartItem.qty, 0) ?? 0;
         const totalPrice = cartItems.reduce((price, cartItem) => price + (cartItem.price * cartItem.qty), 0) ?? 0;
-        return { totalItem, totalPrice }
+        return {totalItem, totalPrice}
     }
 
     //================
@@ -89,7 +100,7 @@ function Cart() {
             let updatedQty = type === "increment" ? absQty : -absQty
             existingProduct["qty"] = Math.max(1, (existingProduct.qty + updatedQty))
         } else {
-            cartItems.push({ ...product, qty: absQty });
+            cartItems.push({...product, qty: absQty});
         }
         saveCart()
     }
@@ -116,7 +127,7 @@ function Cart() {
 const cart = Cart();
 
 function displayCart() {
-    const { totalItem, totalPrice } = cart.calculateCart();
+    const {totalItem, totalPrice} = cart.calculateCart();
     let cartQty = document.getElementById("cart-qty");
     let subtotal = document.getElementById("subtotal");
     let totalspan = document.getElementById("totalItem");
@@ -173,10 +184,16 @@ function displayCart() {
                 const type = event.target.dataset.qty;
                 cart.addToCart(1, product, type);
                 displayCart();
+                if (cartContainer) {
+                    displayCartPageCart()
+                }
             }));
             item.querySelector(".close button").addEventListener("click", () => {
                 cart.deleteCart(product.productId);
                 displayCart();
+                if (cartContainer) {
+                    displayCartPageCart()
+                }
             })
             cartContainer.appendChild(item)
         })
@@ -199,7 +216,7 @@ function EcommerceManagement() {
     }
 
     function displayProducts() {
-        const carousel = document.getElementById("carousel-items");
+
         carousel.innerHTML = "";
         products.forEach(product => {
             const template = document.createElement("template")
@@ -243,6 +260,7 @@ function EcommerceManagement() {
             const item = template.content.firstElementChild;
             item.querySelector(".cartBtn").addEventListener("click", () => {
                 cart.addToCart(1, product, "increment");
+                displayToaster()
                 displayCart()
             })
             carousel.appendChild(item)
@@ -250,13 +268,15 @@ function EcommerceManagement() {
         displayCart()
     }
 
-    return { saveProductsInStorage, displayProducts }
+    return {saveProductsInStorage, displayProducts}
 }
 
 
 const ecommerceManagement = EcommerceManagement();
 //ecommerceManagement.saveProductsInStorage()
-ecommerceManagement.displayProducts();
+if (carousel) {
+    ecommerceManagement.displayProducts();
+}
 
 
 
