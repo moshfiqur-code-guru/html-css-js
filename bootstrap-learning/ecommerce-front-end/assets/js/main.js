@@ -152,7 +152,7 @@ function displayCart() {
             const template = document.createElement("template")
             template.innerHTML = `<div
                                                         class="cart-item d-flex align-items-center justify-content-between border-1 border-bottom pb-2">
-                                                    <img class="img-fluid"
+                                                    <img class="img-fluid cart-thumb"
                                                          src="https://img.drz.lazcdn.com/static/bd/p/9b8deff622ce4918404fc833f1fb4abe.jpg_960x960q80.jpg_.webp"/>
                                                     <div class="name">
                                                         <span>${product.name}</span>

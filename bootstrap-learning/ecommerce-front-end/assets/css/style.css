@@ -141,8 +141,7 @@ button.btn.btn-sm {
 /*=======================================
  MAIN SECTION
 =======================================*/
-#main {
-}
+#main {}
 
 #main .list-group-item.list-group-item-action {
     font-size: .70rem;
@@ -237,8 +236,7 @@ DEAL
 /*
 FEATURED PRODUCTS
 */
-.owl-theme-title {
-}
+.owl-theme-title {}
 
 
 .owl-theme-title .owl-nav {
@@ -467,6 +465,10 @@ FOOTER
     width: 450px;
 }
 
+.cart-thumb {
+    width: 50px;
+}
+
 .qty-navigator {
     width: 35px;
 }
@@ -492,10 +494,6 @@ FOOTER
     width: auto;
 }
 
-.cart-dropdown .cart-item img {
-    width: 40px
-}
-
 .cart-dropdown span {
     font-size: 12px;
 }
@@ -506,6 +504,7 @@ FOOTER
 }
 
 .name {
+    width: 150px;
     margin-top: -14px;
 }
 
@@ -523,8 +522,7 @@ SHOPPING CART PAGE
 ===================
 
 */
-.shopping-cart {
-}
+.shopping-cart {}
 
 .shopping-cart img {
     width: 60px;
@@ -541,7 +539,7 @@ ORDER PLACED
     font-size: 80px;
 }
 
-.success-icon + span {
+.success-icon+span {
     margin-top: -15px;
 }
 

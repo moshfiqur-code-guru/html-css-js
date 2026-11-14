@@ -1,22 +1,58 @@
-let orderTotal = 0;
-
 
 const DISCOUNT_CODE = {
-    '#NDH-DOC-DOG': 100,
+    '#12345': 100,
+    '#23456': 50,
+    '#34567': 150,
+    '#45678': 200
+}
+document.getElementById("apply-discount").addEventListener("click", calculateTotal);
+
+function getDiscountAmountByCode() {
+
+    const discountInput = document.getElementById("discount-code");
+    const getCode = discountInput.value;
+
+    if (DISCOUNT_CODE[getCode] !== undefined) {
+        return DISCOUNT_CODE[getCode];
+
+    } else {
+        discountInput.value = "";
+        discountInput.placeholder = "Invalid discount code";
+        return 0;
+    }
 }
 
-function getDiscountAmountByCode(code) {
-    const amount = DISCOUNT_CODE[code];
-    orderTotal -= amount;
+const shippingOptions = document.querySelectorAll(
+    'input[name="shipping"]'
+);
+
+shippingOptions.forEach((radio) => {
+    radio.addEventListener("change", calculateTotal);
+});
+
+function getShippingAmount() {
+    const checkSipping = document.getElementById("sipping-form")
+    const checked = checkSipping.querySelector('input[name="shipping"]:checked');
+    console.log(checked.value)
+    return Number(checked.value);
+}
+
+function calculateTotal() {
+    const sipping = getShippingAmount();
+    const DiscountedAmount = getDiscountAmountByCode()
+    const { totalPrice } = cart.calculateCart();
+    let subtotal = document.querySelector(".subtotal");
+    let discount = document.querySelector(".discount");
+    let finalPrice = document.querySelector(".final-price");
+    subtotal.innerText = '$' + totalPrice.toFixed(2);
+    discount.innerText = '- $' + DiscountedAmount.toFixed(2);
+    finalPrice.innerText = '$' + (totalPrice - DiscountedAmount + sipping).toFixed(2);
 }
 
 function displayCartPageCart() {
-    const {totalPrice} = cart.calculateCart();
-    let subtotal = document.querySelector(".subtotal");
+    calculateTotal()
     let cartContainer = document.querySelector("#cart-table-items");
     cartContainer.innerHTML = "";
-    subtotal.innerText = '$' + totalPrice.toFixed(2);
-    orderTotal = subtotal;
     if (cart.cartItems.length === 0) {
         cartContainer.innerHTML =
             ` <div class="text-center py-4">
