@@ -613,3 +613,25 @@ ACCOUNT===========
 .price-range .dropdown-menu {
     min-width: 300px;
 }
+
+/* ============= checkout page ============== */
+
+.product-from-cart .pd-name {
+    width: 200px;
+    text-align: start;
+    margin-left: 10px;
+}
+
+.product-from-cart .pdQty {
+    width: 30px;
+    text-align: center;
+}
+
+.product-from-cart .pdSubTotal {
+    width: 60px;
+}
+
+.product-from-cart .pdTotal {
+    width: 80px;
+    text-align: end;
+}
