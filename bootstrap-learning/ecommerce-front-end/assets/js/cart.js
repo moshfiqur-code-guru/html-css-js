@@ -1,11 +1,14 @@
-
 const DISCOUNT_CODE = {
     '#12345': 100,
     '#23456': 50,
     '#34567': 150,
     '#45678': 200
 }
-document.getElementById("apply-discount").addEventListener("click", calculateTotal);
+let discountAmount = 0;
+document.getElementById("apply-discount").addEventListener("click", () => {
+    discountAmount = getDiscountAmountByCode()
+    calculateTotal()
+});
 
 function getDiscountAmountByCode() {
 
@@ -33,20 +36,18 @@ shippingOptions.forEach((radio) => {
 function getShippingAmount() {
     const checkSipping = document.getElementById("sipping-form")
     const checked = checkSipping.querySelector('input[name="shipping"]:checked');
-    console.log(checked.value)
-    return Number(checked.value);
+    return checked ? Number(checked.value) : 0;
 }
 
 function calculateTotal() {
     const sipping = getShippingAmount();
-    const DiscountedAmount = getDiscountAmountByCode()
-    const { totalPrice } = cart.calculateCart();
+    const {totalPrice} = cart.calculateCart();
     let subtotal = document.querySelector(".subtotal");
     let discount = document.querySelector(".discount");
     let finalPrice = document.querySelector(".final-price");
     subtotal.innerText = '$' + totalPrice.toFixed(2);
-    discount.innerText = '- $' + DiscountedAmount.toFixed(2);
-    finalPrice.innerText = '$' + (totalPrice - DiscountedAmount + sipping).toFixed(2);
+    discount.innerText = '- $' + discountAmount.toFixed(2);
+    finalPrice.innerText = '$' + (totalPrice - discountAmount + sipping).toFixed(2);
 }
 
 function displayCartPageCart() {
@@ -110,4 +111,23 @@ function displayCartPageCart() {
 
 displayCartPageCart();
 
-displayCart()
+displayCart();
+
+const orders = [
+    {
+        orderId: 0,
+        productsIds: [1, 2, 4],
+        quantity: 4,
+        totalPrice: 4550
+    }
+]
+const shippings = [
+    {
+        shippingId: 1,
+        orderId: 0,
+        name: '',
+        address: '',
+        method: '',
+        paymentMethod: ''
+    }
+]
