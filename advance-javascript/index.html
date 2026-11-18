@@ -6,10 +6,34 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
 
+        table td {
+            padding: 0px 10px;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
-<h1>Hello Advance Javascript</h1>
-<script src="script.js"></script>
+<div class="products" style="text-align: center">
+    <button id="add-new">ADD NEW</button>
+    <table border="1" width="1300" align="center">
+        <thead>
+        <tr>
+            <th>Post ID</th>
+            <th>User ID</th>
+            <th>title</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody id="product-body">
+        </tbody>
+    </table>
+</div>
+<script src="api.js"></script>
+<script src="script-product.js"></script>
 </body>
 </html>
